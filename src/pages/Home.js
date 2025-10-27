@@ -308,7 +308,7 @@ function Home() {
               <div className="absolute left-4 top-4 bg-white/90 text-red-600 rounded-full px-3 py-1 flex items-center gap-2 shadow">
                 <span className="w-2 h-2 bg-red-600 rounded-full animate-pulse" />
                 <span className="text-sm font-medium">بث مباشر</span>
-
+              </div>
             </div>
 
             <div className="flex justify-center mt-6">
