@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 export default function Navbar({ onLoginClick }) {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+  const closeMenu = () => setIsMenuOpen(false);
+
   return (
     <header className="w-full">
       {/* top black bar */}
@@ -51,14 +56,50 @@ export default function Navbar({ onLoginClick }) {
             
             
             {/* main links */}
-            <div className="hidden lg:flex items-center gap-10 text-[#0b0b0b] font-semibold">
-              <Link to="/" className="hover:opacity-90">الفئات</Link>
-              <Link to="/auctions" className="hover:opacity-90">المزادات</Link>
-              <Link to="/advertisement" className="hover:opacity-90">إعلانات</Link>
-              <Link to="/about" className="hover:opacity-90">من نحن</Link>
-              <Link to="/saved" className="hover:opacity-90">المحفوظات</Link>
+            <div className="hidden lg:flex items-center gap-8 text-[#0b0b0b] font-semibold">
+              <Link to="/" className="flex items-center gap-2 hover:bg-[#0b0b0b]/10 px-3 py-2 rounded-lg transition-colors duration-200">
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 10h16M4 14h16M4 18h16" />
+                </svg>
+                الفئات
+              </Link>
+              <Link to="/auctions" className="flex items-center gap-2 hover:bg-[#0b0b0b]/10 px-3 py-2 rounded-lg transition-colors duration-200">
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                المزادات
+              </Link>
+              <Link to="/advertisement" className="flex items-center gap-2 hover:bg-[#0b0b0b]/10 px-3 py-2 rounded-lg transition-colors duration-200">
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z" />
+                </svg>
+                إعلانات
+              </Link>
+              <Link to="/about" className="flex items-center gap-2 hover:bg-[#0b0b0b]/10 px-3 py-2 rounded-lg transition-colors duration-200">
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                من نحن
+              </Link>
+              <Link to="/saved" className="flex items-center gap-2 hover:bg-[#0b0b0b]/10 px-3 py-2 rounded-lg transition-colors duration-200">
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                </svg>
+                المحفوظات
+              </Link>
             </div>
              
+            {/* hamburger menu button for mobile */}
+            <button
+              onClick={toggleMenu}
+              className="lg:hidden flex flex-col justify-center items-center w-8 h-8 text-[#0b0b0b] hover:opacity-80"
+              aria-label="فتح القائمة"
+            >
+              <span className={`block w-5 h-0.5 bg-current transition-transform duration-300 ${isMenuOpen ? 'rotate-45 translate-y-1' : '-translate-y-0.5'}`}></span>
+              <span className={`block w-5 h-0.5 bg-current transition-opacity duration-300 ${isMenuOpen ? 'opacity-0' : 'opacity-100'}`}></span>
+              <span className={`block w-5 h-0.5 bg-current transition-transform duration-300 ${isMenuOpen ? '-rotate-45 -translate-y-1' : 'translate-y-0.5'}`}></span>
+            </button>
+
             {/* left side (location or toggle) */}
             <div className="flex items-center gap-6 text-[#0b0b0b]">
               <button className="flex items-center gap-2 text-sm hover:underline">
@@ -69,6 +110,67 @@ export default function Navbar({ onLoginClick }) {
           </div>
         </div>
       </nav>
+
+      {/* mobile menu overlay */}
+      {isMenuOpen && (
+        <div className="fixed inset-0 z-50 lg:hidden">
+          {/* backdrop */}
+          <div
+            className="absolute inset-0 bg-black/50"
+            onClick={closeMenu}
+          ></div>
+
+          {/* menu panel */}
+          <div className="absolute top-0 right-0 h-full w-80 bg-[#f2b400] shadow-xl transform transition-transform duration-300 ease-in-out">
+            <div className="flex flex-col pt-20 px-6">
+              {/* close button */}
+              <button
+                onClick={closeMenu}
+                className="self-end mb-8 text-[#0b0b0b] hover:opacity-80"
+                aria-label="إغلاق القائمة"
+              >
+                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+
+              {/* menu links */}
+              <nav className="flex flex-col space-y-6 text-[#0b0b0b] font-semibold">
+                <Link to="/" onClick={closeMenu} className="flex items-center gap-3 hover:bg-[#0b0b0b]/10 px-4 py-3 rounded-lg transition-colors duration-200 text-lg">
+                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 10h16M4 14h16M4 18h16" />
+                  </svg>
+                  الفئات
+                </Link>
+                <Link to="/auctions" onClick={closeMenu} className="flex items-center gap-3 hover:bg-[#0b0b0b]/10 px-4 py-3 rounded-lg transition-colors duration-200 text-lg">
+                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  المزادات
+                </Link>
+                <Link to="/advertisement" onClick={closeMenu} className="flex items-center gap-3 hover:bg-[#0b0b0b]/10 px-4 py-3 rounded-lg transition-colors duration-200 text-lg">
+                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z" />
+                  </svg>
+                  إعلانات
+                </Link>
+                <Link to="/about" onClick={closeMenu} className="flex items-center gap-3 hover:bg-[#0b0b0b]/10 px-4 py-3 rounded-lg transition-colors duration-200 text-lg">
+                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  من نحن
+                </Link>
+                <Link to="/saved" onClick={closeMenu} className="flex items-center gap-3 hover:bg-[#0b0b0b]/10 px-4 py-3 rounded-lg transition-colors duration-200 text-lg">
+                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                  </svg>
+                  المحفوظات
+                </Link>
+              </nav>
+            </div>
+          </div>
+        </div>
+      )}
     </header>
   );
 }
