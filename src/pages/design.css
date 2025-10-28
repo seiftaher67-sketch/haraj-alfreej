@@ -1,0 +1,135 @@
+ل#b1{
+	color: #000;
+	background: transparent;
+	border: 2px solid #000;
+	padding: 0.5rem 1rem;
+	border-radius: 6px;
+	font-weight: 600;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-rendering: optimizeLegibility;
+	letter-spacing: 0.05em;
+	cursor: pointer;
+	transition: transform .08s ease, box-shadow .12s ease, background-color .12s;
+	box-shadow: 0 0 0 0 rgba(0,0,0,0);
+}
+
+#b1:hover {
+	background: rgba(0,0,0,0.04);
+	transform: translateY(-1px);
+	box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+}
+
+#b1:active {
+	transform: translateY(0);
+	box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+#b1:focus {
+	outline: none;
+	box-shadow: 0 0 0 4px rgba(0,0,0,0.08);
+}
+
+.clear-black {
+	color: #000;
+	background-color: transparent;
+	font-weight: 700;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-rendering: optimizeLegibility;
+	line-height: 1.4;
+	letter-spacing: 0.01em;
+}
+
+body.clear-text-default {
+	color: #000;
+	background-color: #fff;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-rendering: optimizeLegibility;
+}
+
+.clear-black-strong {
+	color: #000 !important;
+	font-weight: 800;
+}
+
+.clear-black-button,
+button.clear-black {
+	color: #000;
+	background: transparent;
+	border: 2px solid #000;
+	padding: 0.5rem 1rem;
+	border-radius: 6px;
+	font-weight: 600;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-rendering: optimizeLegibility;
+	letter-spacing: 0.05em;
+	cursor: pointer;
+	transition: transform .08s ease, box-shadow .12s ease, background-color .12s;
+	box-shadow: 0 0 0 0 rgba(0,0,0,0);
+}
+
+.clear-black-button:hover,
+button.clear-black:hover {
+	background: rgba(0,0,0,0.04);
+	transform: translateY(-1px);
+	box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+}
+
+.clear-black-button:active,
+button.clear-black:active {
+	transform: translateY(0);
+	box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+.clear-black-button:focus,
+button.clear-black:focus {
+	outline: none;
+	box-shadow: 0 0 0 4px rgba(0,0,0,0.08);
+}
+
+.clear-black-button.strong {
+	font-weight: 800;
+	border-width: 2.5px;
+}
+
+.animate-marquee {
+	animation: marquee 10s linear infinite;
+}
+
+@keyframes marquee {
+	0% {
+		transform: translateX(0);
+	}
+	100% {
+		transform: translateX(-50%);
+	}
+}
+
+.animate-blink-red {
+	animation: blink-red 2s infinite;
+}
+
+@keyframes blink-red {
+	0%, 50% {
+		opacity: 1;
+	}
+	51%, 100% {
+		opacity: 0;
+	}
+}
+
+.animate-logo {
+	animation: logo-rotate 10s linear infinite;
+}
+
+@keyframes logo-rotate {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
