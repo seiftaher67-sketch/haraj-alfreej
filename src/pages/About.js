@@ -69,18 +69,17 @@ const About = () => {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
             <h2 className="text-2xl font-bold mb-4">المقدمة</h2>
-            <p className="leading-8 text-gray-700">
-              السلام عليكم ورحمة الله وبركاته، شركة علي عبد الله الفريج وأولاده
-              هي شركة سعودية تملك جميع أسهمها 100%. تأسست عام 1975م وكانت من أوائل
-              الشركات في بيع وشراء الشاحنات الأوروبية وتمتد هذه الشركة لمواكبة
-              احتياجات السوق. تأسست على يد والدنا رحمه الله حتى وصلت إلى الأبناء
-              والأحفاد وفي ازدهار إلى اليوم.
-            </p>
+            <p className="leading-8 text-gray-700"> السلام عليكم ورحمة الله وبركاته، شركة علي عبد الله الفريج وأولاده هي : </p>
+            <ul className="list-disc pr-6 text-gray-700 space-y-3 text-lg leading-8">
+              <li> شركة سعودية تملك جميع أسهمها 100%.</li>
+              <li>تأسست عام 1975م وكانت من أوائل الشركات في بيع وشراء الشاحنات الأوروبية وتمتد هذه الشركة لمواكبة احتياجات السوق.</li>
+              <li>تأسست على يد والدنا رحمه الله حتى وصلت إلى الأبناء والأحفاد وفي ازدهار إلى اليوم.</li>
+            </ul>
           </div>
           <motion.img
             src="/assets/images/images/Group 6.png"
             alt="Company Intro"
-            className="rounded-2xl w-48 h-48 object-cover hover:scale-105 transition-transform duration-300"
+            className="rounded-2xl w-64 h-64 object-cover hover:scale-105 transition-transform duration-300"
             initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
@@ -110,65 +109,136 @@ const About = () => {
       </section>
 
       {/* ===== Auction Section ===== */}
-      <section className="container mx-auto px-4 py-20">
-        <h2 className="text-2xl font-bold text-center mb-8">
-          تقديم خدمة "إقامة مزادات مخصصة"
-        </h2>
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div>
-            <p className="leading-8 text-gray-700 mb-4">
-              من يمكنهم المشاركة:
-              <br /> شركات – مؤسسات – أفراد
-            </p>
-            <h4 className="font-bold text-yellow-600 mb-2">المزايدات تشمل:</h4>
-            <ul className="list-disc pr-4 text-gray-700 space-y-2">
-              <li>بيع مجموعة شاحنات أو معدات فائضة عن الحاجة</li>
-              <li>تصفية موجودات</li>
-              <li>عرض معدات أمام آلاف المشترين</li>
-            </ul>
-          </div>
-          <motion.img
-            src="/assets/images/placeholder.jpg"
-            alt="Auction Image"
-            className="rounded-2xl shadow-md"
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
+      <section className="bg-gradient-to-r from-blue-50 to-white py-20">
+        <div className="container mx-auto px-4">
+          <motion.h2
+            className="text-4xl font-bold text-center mb-12 text-gray-800"
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-          />
+          >
+            تقديم خدمة "إقامة مزادات مخصصة"
+          </motion.h2>
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <motion.div
+              className="space-y-6"
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              <div className="bg-white p-6 rounded-2xl shadow-lg border-l-4 border-blue-500">
+                <p className="leading-8 text-gray-700 mb-4 text-lg">
+                  <strong>من يمكنهم المشاركة:</strong>
+                  <br /> شركات – مؤسسات – أفراد
+                </p>
+                <h4 className="font-bold text-blue-600 mb-4 text-xl">المزايدات تشمل:</h4>
+                <ul className="list-disc pr-6 text-gray-700 space-y-3 text-lg">
+                  <li>بيع مجموعة شاحنات أو معدات فائضة عن الحاجة</li>
+                  <li>تصفية موجودات</li>
+                  <li>عرض معدات أمام آلاف المشترين</li>
+                </ul>
+              </div>
+            </motion.div>
+            <motion.img
+              src="/assets/images/images/Frame 263.png"
+              alt="Auction Image"
+              className="rounded-2xl shadow-xl hover:scale-105 transition-transform duration-300 w-full h-80 object-cover"
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+            />
+          </div>
         </div>
       </section>
 
       {/* ===== Goals Section ===== */}
-      <section className="bg-gray-50 py-20">
-        <div className="container mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
-          <motion.img
-            src="/assets/images/placeholder.jpg"
-            alt="Goals"
-            className="rounded-2xl shadow-md"
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
+      <section className="bg-gradient-to-r from-yellow-50 to-white py-20">
+        <div className="container mx-auto px-4">
+          <motion.h2
+            className="text-4xl font-bold text-center mb-12 text-gray-800"
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-          />
-          <div>
-            <h2 className="text-2xl font-bold mb-4">أهدافنا</h2>
-            <p className="leading-8 text-gray-700 mb-4">
-              تهدف شركة علي عبد الله الفريج وأولاده إلى المواكبة مع السوق العالمي
-              ورؤية المملكة 2030 للاستحواذ على الشاحنات الصينية بعد ما أثبتت
-              تفوقها عالميًا وجودتها التي واكبت الأجواء الخليجية لكي تساهم في
-              تطوير النقل اللوجيستي في المملكة والصناعات والمعدات الثقيلة.
-            </p>
-            <h4 className="font-bold text-yellow-600 mb-2">مزايا الخدمة:</h4>
-            <ol className="list-decimal pr-4 text-gray-700 space-y-2">
-              <li>تنظيم المزاد بالكامل</li>
-              <li>التسويق والإعلان للوصول لأكبر عدد من المهتمين</li>
-              <li>إدارة المزايدات بشكل آمن وشفاف</li>
-              <li>تسهيل إجراءات البيع والتحصيل والتسليم</li>
-            </ol>
+          >
+            أهدافنا
+          </motion.h2>
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <motion.img
+              src="/assets/images/images/Frame 273.png"
+              alt="Goals"
+              className="rounded-2xl shadow-xl hover:scale-105 transition-transform duration-300 w-full h-80 object-cover"
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+            />
+            <motion.div
+              className="space-y-6"
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              <div className="bg-white p-6 rounded-2xl shadow-lg border-l-4 border-yellow-500">
+                <p className="leading-8 text-gray-700 mb-6 text-lg">
+                  تهدف شركة علي عبد الله الفريج وأولاده إلى المواكبة مع السوق العالمي
+                  ورؤية المملكة 2030 للاستحواذ على الشاحنات الصينية بعد ما أثبتت
+                  تفوقها عالميًا وجودتها التي واكبت الأجواء الخليجية لكي تساهم في
+                  تطوير النقل اللوجيستي في المملكة والصناعات والمعدات الثقيلة.
+                </p>
+                <h4 className="font-bold text-yellow-600 mb-4 text-xl">مزايا الخدمة:</h4>
+                <ol className="list-decimal pr-6 text-gray-700 space-y-3 text-lg">
+                  <li>تنظيم المزاد بالكامل</li>
+                  <li>التسويق والإعلان للوصول لأكبر عدد من المهتمين</li>
+                  <li>إدارة المزايدات بشكل آمن وشفاف</li>
+                  <li>تسهيل إجراءات البيع والتحصيل والتسليم</li>
+                </ol>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== Download App Section ===== */}
+      <section className="relative bg-gradient-to-b from-white to-[#f2b400] h-[455px] overflow-hidden flex items-start">
+        <div className="container mx-auto px-4">
+          <div className="grid md:grid-cols-2 gap-12 items-center h-full">
+            <motion.div
+              className="space-y-6"
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              <h2 className="text-4xl font-bold text-gray-800">تحميل تطبيق حراج الفريج</h2>
+              <p className="leading-8 text-gray-700 text-lg">
+                احصل على أفضل العروض والمزادات مباشرة على هاتفك. قم بتنزيل التطبيق الآن واستمتع بتجربة تسوق فريدة.
+              </p>
+              <div className="flex gap-4">
+                <button className="bg-black text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-800 transition-colors">
+                  تحميل من App Store
+                </button>
+                <button className="bg-black text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-800 transition-colors">
+                  تحميل من Google Play
+                </button>
+              </div>
+            </motion.div>
+            <motion.div
+              className="flex justify-center self-start h-full"
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              <img
+                src="/assets/images/images/Frame.png"
+                alt="Mobile App"
+                className="w-80 md:w-[420px] h-[500px] object-cover object-top"
+
+              />
+            </motion.div>
           </div>
         </div>
       </section>
     </div>
   );
 };
+
 
 export default About;

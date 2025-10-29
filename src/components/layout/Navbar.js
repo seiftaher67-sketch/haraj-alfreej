@@ -11,17 +11,31 @@ export default function Navbar({ onLoginClick }) {
     <header className="w-full">
       {/* top black bar */}
       <div className="bg-[#0b0b0b] text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative h-20 flex items-center justify-between">
-          {/* logo (right side in RTL) */}
-          <div className="flex items-center gap-3 z-20">
-            <Link to="/" className="flex items-center gap-3">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-auto min-h-20 flex flex-col sm:flex-row items-center justify-between gap-4 py-4">
+          {/* logo and search on small screens, logo on large */}
+          <div className="flex items-center gap-3 w-full sm:w-auto">
+            <Link to="/" className="flex items-center gap-3 flex-shrink-0">
               <img src="/assets/images/images/55PNG.PNG" alt="الفريج" className="h-12 w-auto object-contain" />
             </Link>
+            {/* search on small screens */}
+            <div className="flex-1 sm:hidden">
+              <div className="relative">
+                <input
+                  id="site-search"
+                  placeholder="البحث في 500 شاحنة"
+                  className="w-full text-sm bg-white rounded-full py-2 px-3 pr-10 pl-10 shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#f2b400]/30"
+                />
+                {/* magnifier icon */}
+                <div className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-4.35-4.35M11 19a8 8 0 100-16 8 8 0 000 16z" /></svg>
+                </div>
+              </div>
+            </div>
           </div>
 
-          {/* centered search */}
-          <div className="absolute inset-x-0 flex justify-center pointer-events-none">
-            <div className="w-full max-w-2xl px-4 pointer-events-auto">
+          {/* centered search on large screens */}
+          <div className="hidden sm:flex justify-center flex-1">
+            <div className="w-full max-w-2xl px-4">
               <div className="relative">
                 <input
                   id="site-search"
@@ -36,10 +50,10 @@ export default function Navbar({ onLoginClick }) {
             </div>
           </div>
 
-          {/* utility (left side in RTL) */}
-          <div className="flex items-center gap-6 z-20">
-            <button onClick={onLoginClick} className="text-sm hover:text-white">تسجيل الدخول</button>
-            <button className="flex items-center gap-1 text-sm text-white/90 hover:text-white">
+          {/* utility buttons */}
+          <div className="flex items-center gap-4 sm:gap-6 flex-shrink-0">
+            <button onClick={onLoginClick} className="text-sm hover:text-white whitespace-nowrap">تسجيل الدخول</button>
+            <button className="flex items-center gap-1 text-sm text-white/90 hover:text-white whitespace-nowrap">
               <span>EN</span>
               <svg className="w-4 h-4" viewBox="0 0 20 20" fill="none" stroke="currentColor">
                 <path d="M6 8l4 4 4-4" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
@@ -57,13 +71,13 @@ export default function Navbar({ onLoginClick }) {
             
             {/* main links */}
             <div className="hidden lg:flex items-center gap-8 text-[#0b0b0b] font-semibold">
-              <Link to="/" className="flex items-center gap-2 hover:bg-[#0b0b0b]/10 px-3 py-2 rounded-lg transition-colors duration-200">
+              <Link to="/categories" className="flex items-center gap-2 hover:bg-[#0b0b0b]/10 px-3 py-2 rounded-lg transition-colors duration-200">
                 <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 10h16M4 14h16M4 18h16" />
                 </svg>
                 الفئات
               </Link>
-              <Link to="/auctions" className="flex items-center gap-2 hover:bg-[#0b0b0b]/10 px-3 py-2 rounded-lg transition-colors duration-200">
+              <Link to="/" className="flex items-center gap-2 hover:bg-[#0b0b0b]/10 px-3 py-2 rounded-lg transition-colors duration-200">
                 <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
@@ -85,7 +99,7 @@ export default function Navbar({ onLoginClick }) {
                 <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                 </svg>
-                المحفوظات
+                المفضلة
               </Link>
             </div>
              
@@ -136,13 +150,13 @@ export default function Navbar({ onLoginClick }) {
 
               {/* menu links */}
               <nav className="flex flex-col space-y-6 text-[#0b0b0b] font-semibold">
-                <Link to="/" onClick={closeMenu} className="flex items-center gap-3 hover:bg-[#0b0b0b]/10 px-4 py-3 rounded-lg transition-colors duration-200 text-lg">
+                <Link to="/categories" onClick={closeMenu} className="flex items-center gap-3 hover:bg-[#0b0b0b]/10 px-4 py-3 rounded-lg transition-colors duration-200 text-lg">
                   <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 10h16M4 14h16M4 18h16" />
                   </svg>
                   الفئات
                 </Link>
-                <Link to="/auctions" onClick={closeMenu} className="flex items-center gap-3 hover:bg-[#0b0b0b]/10 px-4 py-3 rounded-lg transition-colors duration-200 text-lg">
+                <Link to="/" onClick={closeMenu} className="flex items-center gap-3 hover:bg-[#0b0b0b]/10 px-4 py-3 rounded-lg transition-colors duration-200 text-lg">
                   <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
@@ -164,7 +178,7 @@ export default function Navbar({ onLoginClick }) {
                   <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                   </svg>
-                  المحفوظات
+                  المفضلة
                 </Link>
               </nav>
             </div>
