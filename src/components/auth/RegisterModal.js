@@ -85,9 +85,9 @@ const RegisterModal = ({ isOpen, onClose }) => {
                   <div className="flex items-center px-3 border-r">
                     <span className="text-gray-600">966+</span>
                     <img
-                      src="/saudi-flag.png"
-                      alt="Saudi Flag"
-                      className="w-6 h-4 mr-2"
+                     src="\assets\images\icons\twemoji_flag-saudi-arabia.png"
+                     alt="Saudi Flag"
+                     className="w-6 h-4 mr-2"
                     />
                   </div>
                 </div>

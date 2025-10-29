@@ -20,6 +20,11 @@ function Home() {
       image: '/assets/images/images/Property 1=P3.png',
       title: '',
       subtitle: ''
+    } ,
+     {
+      image: '/assets/images/images/Property 1=Variant4.png',
+      title: '',
+      subtitle: ''
     }
   ];
   const images = ['/assets/images/images/p1.jpeg', '/assets/images/images/p2.jpeg'];
@@ -47,6 +52,22 @@ function Home() {
     const t = setInterval(nextSlide, 5000);
     return () => clearInterval(t);
   }, []);
+
+  // CSS for clock icon animation
+  const clockAnimationStyle = `
+    @keyframes colorCycle {
+      0%, 100% { color: white; }
+      50% { color: red; }
+    }
+
+    .clock-icon {
+      animation: colorCycle 2s infinite;
+    }
+
+    .group:hover .clock-icon {
+      animation-play-state: paused;
+    }
+  `;
 
   return (
     <div dir="rtl" className="flex flex-col bg-gray-50 text-[#0b0b0b]">
@@ -124,6 +145,28 @@ function Home() {
           width: 200px; /* fixed width to fill the div */
           height: 100px; /* fixed height */
         }
+
+        /* Button background animation */
+        @keyframes buttonCycle {
+          0%, 100% {
+            background-color: red;
+            color: white;
+            border-color: red;
+          }
+          50% {
+            background-color: white;
+            color: red;
+            border-color: red;
+          }
+        }
+
+        .button-animate {
+          animation: buttonCycle 2s infinite;
+        }
+
+        .group:hover .button-animate {
+          animation-play-state: paused;
+        }
       `}</style>
 
       {(() => {
@@ -157,7 +200,7 @@ function Home() {
           <div className="flex items-center justify-between mb-8">
             <h2 className="text-3xl font-bold">المزايدات</h2>
             <Link to="/vehicles" className="inline-flex items-center">
-              <span className="group inline-flex items-center gap-3 border-2 border-red-500 text-red-500 px-4 py-2 rounded-lg transition-colors duration-200 hover:bg-red-500 hover:text-white">
+              <span className="group button-animate inline-flex items-center gap-3 border-2 border-red-500 px-4 py-2 rounded-lg transition-colors duration-200 hover:bg-red-500 hover:text-white">
                 {/* أيقونة داخل دائرة */}
                 <span className="flex items-center justify-center w-8 h-8 rounded-full border-2 border-red-500 group-hover:border-white group-hover:bg-white/20 transition-all">
                   <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -181,9 +224,11 @@ function Home() {
       {/* USER TYPES - Figma style with decorations */}
       <section className="relative py-20 bg-white overflow-hidden">
         {/* decorative images (placed in public/assets/images/images/) */}
-        <img src="/assets/images/images/Group 1.png" alt="decor-left" className="hidden lg:block absolute -left-24 top-1/2 -translate-y-1/2 w-80 pointer-events-none" />
-        <img src="/assets/images/images/Group 2.png" alt="decor-right" className="hidden lg:block absolute -right-24 top-1/2 -translate-y-1/2 w-80 pointer-events-none" />
+       <img src="/assets/images/images/Group 2 (1).png" alt="decor-left" className="hidden lg:block absolute -left-24 top-1/2 -translate-y-1/2 w-80 pointer-events-none" style={{ transform: 'scaleX(-1)' }} />
 
+       <img src="/assets/images/images/Group 2 (1) copy.png" alt="decor-right" className="hidden lg:block absolute -right-24 top-1/2 -translate-y-1/2 w-80 pointer-events-none" />
+       
+       
         <div className="max-w-4xl mx-auto px-6 relative z-10">
           <h2 className="text-3xl font-bold text-right mb-8">بنود المزايدات</h2>
 
@@ -297,7 +342,7 @@ function Home() {
       </section>
 
       {/* LIVE VIDEO / YOUTUBE */}
-      <section className="py-12 bg-white">
+      <section id="live-broadcast" className="py-12 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           {/* header with logo + texts */}
           <div className="flex items-center justify-between mb-6 gap-6">

@@ -1,7 +1,9 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { AlertTriangle, DollarSign } from "lucide-react";
 
-const ConfirmBID = ({ bidAmount = "7000", onConfirm, onCancel }) => {
+const ConfirmBID = ({ bidAmount = "7000", price = "6500", onConfirm, onCancel }) => {
+  const totalAmount = Number(price) + Number(bidAmount);
   return (
     <motion.div
       className="bg-white rounded-2xl shadow-2xl w-[90%] max-w-md p-8 text-center"
@@ -9,16 +11,23 @@ const ConfirmBID = ({ bidAmount = "7000", onConfirm, onCancel }) => {
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.3 }}
     >
-      {/* العنوان */}
-      <h2 className="text-2xl font-bold text-gray-800 mb-4">تأكيد المزايدة</h2>
+     
+      {/* النص الجديد */}
+      <p className="text-lg font-bold text-gray-800 mb-4">الان سوف نبدا بالمزايده</p>
 
-      {/* المبلغ */}
-      <p className="text-gray-700 text-lg mb-4">
-        هل أنت متأكد من رغبتك في المزايدة بالمبلغ التالي؟
-      </p>
-      <p className="text-3xl font-extrabold text-[#f2b400] mb-8">
-        {bidAmount} ر.س
-      </p>
+      {/* التنبيه */}
+      <div className="flex items-center justify-center space-x-2 mb-4">
+        <AlertTriangle className="w-6 h-6 text-yellow-500" />
+        <p className="text-gray-700 text-sm">يتم استرداد مبلغ المزايده فى حاله رفض العرض المقدم</p>
+      </div>
+
+      {/* المبلغ الإجمالي */}
+      <div className="flex items-center justify-center space-x-2 mb-4">
+        <DollarSign className="w-6 h-6 text-[#f2b400]" />
+        <p className="text-gray-700 text-sm font-bold">سيتم عمليه المزايده بمبلغ {totalAmount} ر.س</p>
+      </div>
+
+     
 
       {/* الأزرار */}
       <div className="flex flex-col sm:flex-row gap-4 justify-center">

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import { DollarSign, ArrowDown, Gavel } from "lucide-react";
 import ConfirmBID from "./ConfirmBID";
 
 const BIDCard = ({ image, price = "6500", min = "500", onClose }) => {
@@ -20,16 +21,25 @@ const BIDCard = ({ image, price = "6500", min = "500", onClose }) => {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.3 }}
         >
-          {/* Left side: details */}
+          {/* Left side: image */}
+          <img
+            src={image || "/assets/images/trucks/Frame 113.png"}
+            alt="Truck"
+            className="rounded-xl object-cover w-full h-72 md:h-full"
+          />
+
+          {/* Right side: details */}
           <div className="p-8 flex flex-col justify-center space-y-5">
-            <div>
-              <h2 className="text-xl font-bold text-gray-800 mb-2">السعر الحالي</h2>
-              <p className="text-2xl font-extrabold text-[#f2b400]">{price} ر.س</p>
+            <div className="flex items-center space-x-2">
+              <DollarSign className="w-6 h-6 text-[#f2b400]" />
+              <span className="text-lg font-bold text-gray-800">السعر:</span>
+              <span className="text-2xl font-extrabold text-[#f2b400]">{price} ر.س</span>
             </div>
 
-            <div>
-              <h3 className="text-lg font-bold text-gray-800 mb-1">الحد الأدنى</h3>
-              <p className="text-gray-700 text-lg">{min} ر.س</p>
+            <div className="flex items-center space-x-2">
+              <ArrowDown className="w-6 h-6 text-gray-700" />
+              <span className="text-lg font-bold text-gray-800">الحد الأدنى:</span>
+              <span className="text-lg text-gray-700">{min} ر.س</span>
             </div>
 
             {/* Bid input */}
@@ -44,6 +54,7 @@ const BIDCard = ({ image, price = "6500", min = "500", onClose }) => {
                 type="number"
                 value={bidValue}
                 readOnly
+                placeholder="500"
                 className="text-center w-full text-lg font-semibold text-gray-800 outline-none"
               />
               <button
@@ -57,9 +68,10 @@ const BIDCard = ({ image, price = "6500", min = "500", onClose }) => {
             {/* Submit button */}
             <button
               onClick={() => setShowConfirm(true)}
-              className="bg-[#f2b400] hover:bg-[#d4a200] text-black font-bold py-3 rounded-lg text-lg transition"
+              className="bg-[#f2b400] hover:bg-[#d4a200] text-black font-bold py-3 rounded-lg text-lg transition flex items-center justify-center space-x-2"
             >
-              قم بوضع مزايدتك الآن
+              <Gavel className="w-5 h-5" />
+              <span>قم بوضع مزايدتك الآن</span>
             </button>
 
             {/* Close button */}
@@ -70,19 +82,13 @@ const BIDCard = ({ image, price = "6500", min = "500", onClose }) => {
               إغلاق
             </button>
           </div>
-
-          {/* Right side: image */}
-          <img
-            src={image || "/assets/images/trucks/Frame 113.png"}
-            alt="Truck"
-            className="rounded-xl object-cover w-full h-72 md:h-full"
-          />
         </motion.div>
       )}
 
       {showConfirm && (
         <ConfirmBID
           bidAmount={bidValue}
+          price={price}
           onConfirm={() => {
             console.log("تم التأكيد");
             setShowConfirm(false);
