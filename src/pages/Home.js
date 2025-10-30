@@ -359,9 +359,9 @@ function Home() {
             </div>
 
             <div className="hidden sm:flex items-center gap-4">
-              <a href="https://www.youtube.com/" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-sm text-gray-600">
+              <a href="https://youtu.be/bKZtjt27AFg?si=SOD54qWDcOt0zcrM" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-sm text-gray-600">
                 <svg className="w-5 h-5 text-red-600" viewBox="0 0 24 24" fill="currentColor"><path d="M23 7s-.2-1.7-.8-2.4C21.4 4 20.4 4 20 4H4C3.6 4 2.6 4 1.8 4.6 1.2 5.3 1 7 1 7S1 8.8 1.8 9.5C2.6 10 3.6 10 4 10h16c.4 0 1.4 0 2.2-.5.6-.7.8-2.3.8-2.3z"/><path d="M10 8l6 4-6 4z" fill="#fff"/></svg>
-                www.youtube.com/@fahd50501
+                youtu.be/bKZtjt27AFg
               </a>
             </div>
           </div>
@@ -371,7 +371,7 @@ function Home() {
             <div className="relative rounded-xl overflow-hidden aspect-video">
               <iframe
                 className="w-full h-full"
-                src="https://www.youtube.com/embed/REPLACE_VIDEO_ID"
+                src="https://www.youtube.com/embed/bKZtjt27AFg"
                 title="YouTube Live"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowFullScreen
@@ -385,7 +385,7 @@ function Home() {
 
             <div className="flex justify-center mt-6">
               <button className="bg-[#f2b400] hover:bg-[#d19b00] text-[#0b0b0b] py-3 px-8 rounded-lg font-medium shadow">
-                تسجيل في المزاد
+                تسجيل في المزايده
               </button>
             </div>
           </div>
