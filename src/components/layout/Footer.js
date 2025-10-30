@@ -8,6 +8,7 @@ const Footer = () => {
           {/* right: about + logo */}
           <div className="text-right">
             <div className="flex items-start justify-end gap-4">
+              <img src="/assets/images/images/logo.jpeg" alt="logo" className="h-16 w-16 rounded-full object-cover shadow-md border-2 border-white" />
               <div className="text-right">
                 <h3 className="text-lg font-semibold">شركة علي عبدالله الفريج</h3>
                 <p className="mt-3 text-sm text-gray-300 leading-relaxed">
@@ -18,13 +19,11 @@ const Footer = () => {
                   <span className="text-gray-300">الموقع الخاص بالفريج</span>
                 </div>
               </div>
-
-              <img src="/assets/images/images/logo.jpeg" alt="logo" className="h-16 w-16 rounded-full object-cover shadow-md border-2 border-white" />
             </div>
           </div>
 
           {/* center: useful links */}
-          <div className="text-center lg:text-right">
+          <div className="text-right">
             <h4 className="text-lg font-semibold mb-4">الدعم الفني</h4>
             <ul className="space-y-3 text-sm">
               <li><a href="#" className="text-gray-300 hover:text-white underline">مركز الأمان</a></li>
@@ -35,18 +34,18 @@ const Footer = () => {
           </div>
 
           {/* left: contact */}
-          <div className="text-left lg:text-right">
+          <div className="text-right">
             <h4 className="text-lg font-semibold mb-4">تواصل معنا</h4>
             <ul className="space-y-3 text-sm text-gray-300">
-              <li className="flex items-center gap-3 justify-start lg:justify-end">
+              <li className="flex items-center gap-3 justify-start">
                 <span className="text-yellow-400">📞</span>
                 <a href="tel:0501030614" className="hover:underline">0501030614</a>
               </li>
-              <li className="flex items-center gap-3 justify-start lg:justify-end">
+              <li className="flex items-center gap-3 justify-start">
                 <span className="text-yellow-400">💬</span>
                 <a href="https://wa.me/966501030614" target="_blank" rel="noreferrer" className="hover:underline">wa.me/966501030614</a>
               </li>
-              <li className="flex items-center gap-3 justify-start lg:justify-end">
+              <li className="flex items-center gap-3 justify-start">
                 <span className="text-yellow-400">👻</span>
                 <a href="https://snapchat.com/add/alforij01" target="_blank" rel="noreferrer" className="hover:underline">snapchat.com/add/alforij01</a>
               </li>

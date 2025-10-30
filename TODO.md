@@ -1,13 +1,5 @@
-# TODO: Modify Button Background Animation
+# TODO for Footer Improvements
 
-## Steps to Complete
-- [x] Update CSS keyframes for button background to cycle from red to white, and text color to inverse.
-- [x] Apply the animation class to the button span.
-- [x] Ensure the animation pauses on hover (group-hover).
-- [x] Verify the animation works in the browser.
-
-## Dependent Files
-- src/pages/Home.js
-
-## Followup Steps
-- Test the animation by running the app and hovering over the button.
+- [x] Update Footer.js to align all text to the right and adjust flex directions for Arabic RTL layout
+- [x] Test the footer visually by running the app
+- [x] Move logo to the right next to the company name

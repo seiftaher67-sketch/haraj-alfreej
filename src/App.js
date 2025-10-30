@@ -16,6 +16,7 @@ import Advertisement from './pages/Advertisement';
 import Saved from './pages/Saved';
 import CarDetails from './pages/CarDetails';
 import PaymentPage from './pages/PaymentPage';
+import LiveBroadcast from './pages/LiveBroadcast';
 
 function App() {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
@@ -38,6 +39,7 @@ function App() {
             <Route path="/saved" element={<Saved />} />
             <Route path="/car-details" element={<CarDetails />} />
             <Route path="/payment" element={<PaymentPage />} />
+            <Route path="/live-broadcast" element={<LiveBroadcast />} />
             <Route path="/login" element={<Login />} />
           </Routes>
         </main>
