@@ -10,7 +10,7 @@ const BIDCard = ({ image, price = "6500", min = "500", onClose }) => {
   const navigate = useNavigate();
 
   const increaseBid = () => setBidValue((v) => v + 100);
-  const decreaseBid = () => setBidValue((v) => (v > 0 ? v - 100 : 0));
+  const decreaseBid = () => setBidValue((v) => Math.max(v - 100, Number(min)));
 
   return (
     <>
@@ -25,7 +25,7 @@ const BIDCard = ({ image, price = "6500", min = "500", onClose }) => {
           <img
             src={image || "/assets/images/trucks/Frame 113.png"}
             alt="Truck"
-            className="rounded-xl object-cover w-full h-72 md:h-full"
+            className="rounded-sm object-cover w-full h-62  m-5"
           />
 
           {/* Right side: details */}

@@ -1,5 +1,4 @@
-# TODO for Footer Improvements
-
-- [x] Update Footer.js to align all text to the right and adjust flex directions for Arabic RTL layout
-- [x] Test the footer visually by running the app
-- [x] Move logo to the right next to the company name
+- [x] Update "المزايدات" h2: Change class to "text-2xl font-bold text-right"
+- [x] Update "بنود المزايدات" h2: Change "text-3xl" to "text-2xl"
+- [ ] Update "الفئات" h2: Add "text-right" to the class
+- [ ] Update "الأكثر شهرة" h3: Change to h2, update class to "text-2xl font-bold text-right mb-4"

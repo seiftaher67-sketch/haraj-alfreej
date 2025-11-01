@@ -77,9 +77,9 @@ const About = () => {
             </ul>
           </div>
           <motion.img
-            src="/assets/images/images/Group 6.png"
+            src="/assets/images/images/img69.jpg"
             alt="Company Intro"
-            className="rounded-2xl w-64 h-64 object-cover hover:scale-105 transition-transform duration-300"
+            className="rounded-xl w-94 h-94 object-cover hover:scale-105 transition-transform duration-300"
             initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}

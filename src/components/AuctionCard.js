@@ -1,15 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { BookmarkIcon as BookmarkOutlineIcon } from '@heroicons/react/24/outline';
 import { BookmarkIcon as BookmarkSolidIcon } from '@heroicons/react/24/solid';
+import { CurrencyDollarIcon } from '@heroicons/react/24/outline';
 import { Link } from 'react-router-dom';
-
-/**
-
-AuctionCard Component
-تصميم مطابق لتصميم كروت المزادات في الصفحة 15 و18 من الملف
-جاهز للربط بالباك إند ويقبل props مثل:
-{ id, image, title, price, minPrice, model, serialNumber, year, status, remainingTime }
-*/
 
 
 
@@ -129,43 +122,43 @@ return (
 
   {/* التفاصيل */}
   <div className="p-4 flex flex-col gap-3">
-    {/* العنوان والسعر */}
-    <div className="flex items-center justify-between">
-      <h3 className="font-semibold text-[15px] text-gray-900 truncate max-w-[70%] leading-tight">
-        {auction.title}
-      </h3>
-      <div className="text-[#f2b400] font-bold text-base whitespace-nowrap">
-        {auction.price} ر.س
-      </div>
+    {/* العنوان */}
+    <h3 className="font-bold text-[25px] text-gray-900 leading-tight text-center">
+      {auction.title}
+    </h3>
+
+    {/* السعر */}
+    <div className="font-bold text-black-400 text-base">
+      السعر <span className="ml-16"></span><CurrencyDollarIcon className="w-4 h-4 inline mr-1" /> <span className="text-[#f2b400] font-bold">{auction.price}</span> ر.س
+    </div>
+
+    {/* الحد الأدنى */}
+    <div className="font-bold text-gray-400 text-base">
+      الحد الأدنى <span className="ml-10"></span><CurrencyDollarIcon className="w-4 h-4 inline mr-1" /> <span className=" font-bold">{auction.minPrice}</span> ر.س
     </div>
 
     {/* التفاصيل المصغرة */}
     <div className="grid grid-cols-3 text-sm text-gray-600 border-t border-b border-gray-100 py-2">
       <div className="text-right">
-        <div className="text-xs text-gray-400">الحد الأدنى</div>
-        <div className="font-medium">{auction.minPrice} ر.س</div>
-      </div>
-      <div className="text-center border-x border-gray-100">
         <div className="text-xs text-gray-400">الموديل</div>
         <div className="font-medium">{auction.model}</div>
       </div>
-      <div className="text-left">
+      <div className="text-center border-x border-gray-100">
         <div className="text-xs text-gray-400">رقم التسلسل</div>
         <div className="font-medium">{auction.serialNumber}</div>
       </div>
+      <div className="text-left">
+        <div className="text-xs text-gray-400">عدد المزايدات</div>
+        <div className="font-medium">{auction.bidsCount}</div>
+      </div>
     </div>
 
-    {/* سنة التسجيل + الوقت */}
-    <div className="flex items-center justify-between text-sm text-gray-600">
-      <div className="flex flex-col text-right">
-        <span className="text-xs text-gray-400">سنة التسجيل</span>
-        <span className="font-medium">{auction.year}</span>
-      </div>
-
+    {/* الوقت */}
+    <div className="flex items-center justify-center text-sm text-gray-600">
       {auction.status === 'Opening' ? (
-        <div className="px-3 py-1.5 rounded-lg border border-red-200 text-red-600 font-medium text-xs text-center">
+        <div className="px-3 py-1.5 rounded-lg border border-red-200 text-red-600 font-medium text-xs flex items-center gap-2">
           <div>الوقت المتبقي</div>
-          <div className="text-base font-bold mt-1">
+          <div className="text-lg font-bold">
             {remainingTime}
           </div>
         </div>
@@ -181,22 +174,22 @@ return (
     </div>
 
     {/* الزر */}
-    <div>
+    <div className="flex justify-center">
       {auction.status === 'Opening' ? (
         <Link to="/car-details" state={{ auction }}>
-          <button className="w-full bg-[#f2b400] hover:bg-[#d19b00] text-[#0b0b0b] py-2.5 rounded-lg font-semibold text-sm transition-colors">
+          <button className="bg-[#f2b400] hover:bg-[#d19b00] text-[#0b0b0b] py-2.5 px-6 rounded-lg font-semibold text-sm transition-colors">
             بدأ المزايدة
           </button>
         </Link>
       ) : auction.status === 'Sold' ? (
         <button
           disabled
-          className="w-full bg-gray-100 text-gray-500 py-2.5 rounded-lg font-semibold text-sm cursor-not-allowed"
+          className="bg-gray-100 text-gray-500 py-2.5 px-6 rounded-lg font-semibold text-sm cursor-not-allowed"
         >
           تم البيع
         </button>
       ) : (
-        <button className="w-full bg-pink-50 border border-pink-200 text-pink-600 py-2.5 rounded-lg font-semibold text-sm">
+        <button className="bg-pink-50 border border-pink-200 text-pink-600 py-2.5 px-6 rounded-lg font-semibold text-sm">
           قم بالانتظار
         </button>
       )}
@@ -223,6 +216,7 @@ price: '4000',
 minPrice: '500',
 model: 'TGS',
 serialNumber: '12346',
+bidsCount: '25',
 year: '2022',
 remainingTime: '07 : 15 : 01',
 status: 'Opening', // Opening | Sold | Upcoming

@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import BuildingLocationPicker from "../components/BuildingLocationPicker";
 import { X } from "lucide-react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const PaymentPage = () => {
   const [selectedMethod, setSelectedMethod] = useState(null);
@@ -12,6 +14,7 @@ const PaymentPage = () => {
     expiry: '',
     cvv: ''
   });
+  const [expiryDate, setExpiryDate] = useState(null);
   const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
 
   const isFormComplete = cardData.name.trim() && cardData.number.trim() && cardData.expiry.trim() && cardData.cvv.trim();
@@ -160,12 +163,19 @@ const PaymentPage = () => {
                   <label className="block text-sm font-medium text-gray-600 mb-1">
                     تاريخ الانتهاء
                   </label>
-                  <input
-                    type="text"
-                    placeholder="MM / YY"
+                  <DatePicker
+                    selected={expiryDate}
+                    onChange={(date) => {
+                      setExpiryDate(date);
+                      const month = (date.getMonth() + 1).toString().padStart(2, '0');
+                      const year = date.getFullYear().toString().slice(-2);
+                      setCardData({ ...cardData, expiry: `${month} / ${year}` });
+                    }}
+                    dateFormat="MM / yy"
+                    showMonthYearPicker
+                    showFullMonthYearPicker
                     className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-yellow-400 outline-none"
-                    value={cardData.expiry}
-                    onChange={(e) => setCardData({ ...cardData, expiry: e.target.value })}
+                    placeholderText="MM / YY"
                   />
                 </div>
                 <div>

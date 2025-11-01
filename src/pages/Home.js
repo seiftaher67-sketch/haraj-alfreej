@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
+import { motion } from 'framer-motion';
 import AuctionCard from '../components/AuctionCard';
+import { FaTruck, FaCar, FaTrailer, FaCog } from 'react-icons/fa';
 
 function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [selectedCategories, setSelectedCategories] = useState([]);
+  const [selectedCards, setSelectedCards] = useState([]);
+  const [openDropdown, setOpenDropdown] = useState(null);
   const slides = [
     {
       image: '/assets/images/images/Property 1=P1.png',
@@ -47,6 +52,26 @@ function Home() {
 
   const nextSlide = () => setCurrentSlide((p) => (p + 1) % slides.length);
   const prevSlide = () => setCurrentSlide((p) => (p - 1 + slides.length) % slides.length);
+
+  const toggleCategory = (category) => {
+    setSelectedCategories(prev =>
+      prev.includes(category)
+        ? prev.filter(c => c !== category)
+        : [...prev, category]
+    );
+  };
+
+  const toggleCardSelection = (id) => {
+    setSelectedCards(prev =>
+      prev.includes(id)
+        ? prev.filter(cardId => cardId !== id)
+        : [...prev, id]
+    );
+  };
+
+  const toggleDropdown = (filterName) => {
+    setOpenDropdown(openDropdown === filterName ? null : filterName);
+  };
 
   useEffect(() => {
     const t = setInterval(nextSlide, 5000);
@@ -198,7 +223,7 @@ function Home() {
       <section className="py-14">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex items-center justify-between mb-8">
-            <h2 className="text-3xl font-bold">المزايدات</h2>
+            <h2 className="text-3xl font-bold text-right">المزايدات</h2>
             <Link to="/vehicles" className="inline-flex items-center">
               <span className="group button-animate inline-flex items-center gap-3 border-2 border-red-500 px-4 py-2 rounded-lg transition-colors duration-200 hover:bg-red-500 hover:text-white">
                 {/* أيقونة داخل دائرة */}
@@ -224,9 +249,9 @@ function Home() {
       {/* USER TYPES - Figma style with decorations */}
       <section className="relative py-20 bg-white overflow-hidden">
         {/* decorative images (placed in public/assets/images/images/) */}
-       <img src="/assets/images/images/Group 2 (1).png" alt="decor-left" className="hidden lg:block absolute -left-24 top-1/2 -translate-y-1/2 w-80 pointer-events-none" style={{ transform: 'scaleX(-1)' }} />
+       <img src="/assets/images/images/Group 2 (1).png" alt="decor-left" className="block absolute -left-12 lg:-left-24 top-1/2 -translate-y-1/2 w-40 lg:w-80 pointer-events-none" style={{ transform: 'scaleX(-1)' }} />
 
-       <img src="/assets/images/images/Group 2 (1) copy.png" alt="decor-right" className="hidden lg:block absolute -right-24 top-1/2 -translate-y-1/2 w-80 pointer-events-none" />
+       <img src="/assets/images/images/Group 2 (1) copy.png" alt="decor-right" className="block absolute -right-12 lg:-right-24 top-1/2 -translate-y-1/2 w-40 lg:w-80 pointer-events-none" />
        
        
         <div className="max-w-4xl mx-auto px-6 relative z-10">
@@ -235,7 +260,7 @@ function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Guest Card */}
             <div className="relative">
-              <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-10 text-right min-h-[450px]">
+              <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-10 text-right min-h-[450px] flex flex-col h-full">
                 <div className="text-center">
                   <h3 className="text-2xl font-bold mb-1">Guest</h3>
                   <p className="text-gray-600 mb-6">الدخول كمستخدم زائر</p>
@@ -258,7 +283,7 @@ function Home() {
                   ))}
                 </ul>
 
-                <button className="mt-2 inline-block w-48 mx-auto bg-[#f2b400] hover:bg-[#d19b00] text-[#0b0b0b] font-medium py-3 rounded-lg shadow">
+                <button className="mt-auto inline-block w-48 mx-auto bg-[#f2b400] hover:bg-[#d19b00] text-[#0b0b0b] font-medium py-3 rounded-lg shadow">
                   الدخول مجانا
                 </button>
               </div>
@@ -266,7 +291,7 @@ function Home() {
 
             {/* Bidder Card */}
             <div className="relative">
-              <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-10 text-right min-h-[450px]">
+              <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-10 text-right min-h-[450px] relative">
                 <div className="text-center">
                   <h3 className="text-2xl font-bold mb-1">Bidder</h3>
                   <p className="text-gray-600 mb-6">الدخول كمزايد</p>
@@ -289,13 +314,12 @@ function Home() {
                 </ul>
 
                 <div className="flex items-center justify-center gap-4 mb-6">
-                  <img src="/assets/images/icons/logos_paypal.png" alt="paypal" className="h-6" />
+                  <img src="/assets/images/icons/2560px-Mada_Logo.svg 1.png" alt="paypal" className="h-6" />
                   <img src="/assets/images/icons/logos_visa.png" alt="visa" className="h-6" />
                   <img src="/assets/images/icons/icons.png" alt="mastercard" className="h-6" />
-                  <img src="/assets/images/icons/fa-brands_apple-pay.png" alt="applepay" className="h-6" />
                 </div>
 
-                <button className="mt-2 inline-block w-48 mx-auto bg-[#f2b400] hover:bg-[#d19b00] text-[#0b0b0b] font-medium py-3 rounded-lg shadow">
+                 <button className=" flex items-center justify-center mt-2  w-48 mx-auto bg-[#f2b400] hover:bg-[#d19b00] text-[#0b0b0b] font-medium py-3 rounded-lg shadow ">
                   بدأ التزايد الآن
                 </button>
               </div>
@@ -304,11 +328,11 @@ function Home() {
         </div>
       </section>
 
-      {/* CATEGORIES SECTION - insert after USER TYPES */}
-      <section className="py-12 bg-white">
+      {/* CATEGORIES SECTION */}
+      <section className="py-12 bg-gray-50">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex items-center justify-between mb-6">
-            <h2 className="text-2xl font-bold">الفئات</h2>
+            <h2 className="text-3xl font-bold">الفئات</h2>
 
             <div className="flex items-center gap-3">
               <button className="bg-black text-white px-6 py-2 rounded-lg">بحث</button>
@@ -317,17 +341,60 @@ function Home() {
 
           {/* category chips */}
           <div className="flex items-center gap-3 flex-wrap mb-6">
-            {['شاحنات','سيارات','مقطورات','قطع غيار'].map((c) => (
-              <button key={c} className="px-4 py-2 rounded-lg bg-gray-100 hover:bg-gray-200 text-[#0b0b0b]">
-                {c}
+            {[
+              { name: 'شاحنات', icon: FaTruck },
+              { name: 'سيارات', icon: FaCar },
+              { name: 'مقطورات', icon: FaTrailer },
+              { name: 'قطع غيار', icon: FaCog },
+            ].map(({ name, icon: Icon }) => (
+              <button
+                key={name}
+                onClick={() => toggleCategory(name)}
+                className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-colors ${
+                  selectedCategories.includes(name)
+                    ? 'bg-yellow-500 text-white'
+                    : 'bg-gray-100 hover:bg-gray-200 text-[#0b0b0b]'
+                }`}
+              >
+                <Icon className="w-4 h-4" />
+                {name}
               </button>
             ))}
           </div>
 
-          {/* filters row (visual only) */}
+          {/* filters row */}
           <div className="flex items-center gap-3 flex-wrap mb-8">
-            {['المدينة','الماركة','الموديل','سنة الصنع','حالة السيارة'].map((f) => (
-              <div key={f} className="px-4 py-2 rounded-lg bg-gray-100">{f} ▾</div>
+            {[
+              { name: 'المدينة', options: ['الرياض', 'جدة', 'الدمام', 'مكة'] },
+              { name: 'الماركة', options: ['مرسيدس', 'فولفو', 'مان', 'سكانيا'] },
+              { name: 'الموديل', options: ['TGS', 'FH', 'TGX', 'R'] },
+              { name: 'سنة الصنع', options: ['2020', '2021', '2022', '2023'] },
+              { name: 'حالة السيارة', options: ['جديد', 'مستعمل', 'مصدوم'] },
+            ].map(({ name, options }) => (
+              <div key={name} className="relative">
+                <button
+                  onClick={() => toggleDropdown(name)}
+                  className="px-4 py-2 rounded-lg bg-gray-100 hover:bg-gray-200 text-[#0b0b0b] flex items-center gap-2"
+                >
+                  {name} ▾
+                </button>
+                {openDropdown === name && (
+                  <div className="absolute top-full mt-1 bg-white border border-gray-200 rounded-lg shadow-lg z-10 min-w-[150px]">
+                    {options.map((option) => (
+                      <div
+                        key={option}
+                        className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                        onClick={() => {
+                          // Handle selection (e.g., update filter state)
+                          setOpenDropdown(null);
+                        }}
+                      >
+                        {option}
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
             ))}
           </div>
 
@@ -335,7 +402,15 @@ function Home() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {vehicles.map((v) => (
-              <AuctionCard key={v.id} auction={v} />
+              <div
+                key={v.id}
+                onClick={() => toggleCardSelection(v.id)}
+                className={`cursor-pointer transition-all ${
+                  selectedCards.includes(v.id) ? 'ring-2 ring-blue-500 rounded-2xl' : ''
+                }`}
+              >
+                <AuctionCard auction={v} />
+              </div>
             ))}
           </div>
         </div>
@@ -391,6 +466,7 @@ function Home() {
           </div>
         </div>
       </section>
+
     </div>
   );
 }

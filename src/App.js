@@ -6,12 +6,12 @@ import LoginModal from './components/auth/LoginModal';
 import RegisterModal from './components/auth/RegisterModal';
 import Login from './components/Login';
 import Home from './pages/Home';
-import Products from './pages/Products';
-import ProductDetails from './pages/ProductDetails';
+import ScrollToTop from './components/ScrollToTop';
+
 import Categories from './pages/Categories';
 import About from './pages/About';
 import Auctions from './pages/Auctions';
-import Ads from './pages/Ads';
+
 import Advertisement from './pages/Advertisement';
 import Saved from './pages/Saved';
 import CarDetails from './pages/CarDetails';
@@ -24,16 +24,16 @@ function App() {
 
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <div className="min-h-screen flex flex-col bg-gray-50 text-right">
         <Navbar onLoginClick={() => setIsLoginModalOpen(true)} />
         <main className="flex-grow">
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/products" element={<Products />} />
-            <Route path="/products/:id" element={<ProductDetails />} />
+           
             <Route path="/categories" element={<Categories />} />
             <Route path="/auctions" element={<Auctions />} />
-            <Route path="/ads" element={<Ads />} />
+            
             <Route path="/advertisement" element={<Advertisement />} />
             <Route path="/about" element={<About />} />
             <Route path="/saved" element={<Saved />} />
@@ -55,6 +55,10 @@ function App() {
         <RegisterModal
           isOpen={isRegisterModalOpen}
           onClose={() => setIsRegisterModalOpen(false)}
+          onLoginClick={() => {
+            setIsRegisterModalOpen(false);
+            setIsLoginModalOpen(true);
+          }}
         />
       </div>
     </BrowserRouter>
