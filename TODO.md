@@ -1,3 +1,5 @@
-# TODO: Add Google Maps Link to Navbar Location Button
+# TODO for PaymentPage Validation
 
-- [x] Edit `src/components/layout/Navbar.js` to replace the "الموقع" button with an anchor tag linking to https://maps.app.goo.gl/XL6Jp84W9SLgSeoQ7?g_st=awb, opening in a new tab.
+- [x] Update isFormComplete to check selectedMethod, locationData, and all cardData fields
+- [x] Add disabled={!isFormComplete} to the "Pay Now" button
+- [x] Add disabled styling (opacity-50 cursor-not-allowed) to the button when disabled
