@@ -1,3 +1,7 @@
-# TODO: Add Google Maps Link to Navbar Location Button
-
-- [x] Edit `src/components/layout/Navbar.js` to replace the "الموقع" button with an anchor tag linking to https://maps.app.goo.gl/XL6Jp84W9SLgSeoQ7?g_st=awb, opening in a new tab.
+- Make hero section responsive (text and image) ✓
+- Make vision and future vision section responsive ✓
+- Make intro section responsive ✓
+- Make about company section responsive ✓
+- Make auction section responsive ✓
+- Make goals section responsive ✓
+- Make download app section responsive ✓

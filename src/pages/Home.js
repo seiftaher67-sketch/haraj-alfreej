@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
@@ -10,6 +11,7 @@ function Home() {
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [selectedCards, setSelectedCards] = useState([]);
   const [openDropdown, setOpenDropdown] = useState(null);
+  const [searchQuery, setSearchQuery] = useState('');
   const slides = [
     {
       image: '/assets/images/images/Property 1=P1.png',
@@ -49,6 +51,8 @@ function Home() {
     },
     // ...باقي البيانات
   ];
+
+  const filteredVehicles = vehicles;
 
   const nextSlide = () => setCurrentSlide((p) => (p + 1) % slides.length);
   const prevSlide = () => setCurrentSlide((p) => (p - 1 + slides.length) % slides.length);
@@ -224,7 +228,7 @@ function Home() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex items-center justify-between mb-8">
             <h2 className="text-3xl font-bold text-right">المزايدات</h2>
-            <Link to="/vehicles" className="inline-flex items-center">
+            <Link to="/live-broadcast" className="inline-flex items-center">
               <span className="group button-animate inline-flex items-center gap-3 border-2 border-red-500 px-4 py-2 rounded-lg transition-colors duration-200 hover:bg-red-500 hover:text-white">
                 {/* أيقونة داخل دائرة */}
                 <span className="flex items-center justify-center w-8 h-8 rounded-full border-2 border-red-500 group-hover:border-white group-hover:bg-white/20 transition-all">
@@ -239,7 +243,7 @@ function Home() {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {vehicles.map((vehicle) => (
+            {filteredVehicles.map((vehicle) => (
               <AuctionCard key={vehicle.id} auction={vehicle} />
             ))}
           </div>
@@ -335,7 +339,16 @@ function Home() {
             <h2 className="text-3xl font-bold">الفئات</h2>
 
             <div className="flex items-center gap-3">
-              <button className="bg-black text-white px-6 py-2 rounded-lg">بحث</button>
+              <input
+                type="text"
+                placeholder="ابحث عن سيارات..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white text-black font-bold"
+              />
+              <button className="bg-black text-white px-6 py-2 rounded-lg">
+                بحث
+              </button>
             </div>
           </div>
 
@@ -401,7 +414,7 @@ function Home() {
           <h3 className="text-xl font-semibold mb-4">الأكثر شهرة</h3>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {vehicles.map((v) => (
+            {filteredVehicles.map((v) => (
               <div
                 key={v.id}
                 onClick={() => toggleCardSelection(v.id)}
