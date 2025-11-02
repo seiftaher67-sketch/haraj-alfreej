@@ -1,53 +1,55 @@
-
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
-import { motion } from 'framer-motion';
-import AuctionCard from '../components/AuctionCard';
-import { FaTruck, FaCar, FaTrailer, FaCog } from 'react-icons/fa';
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
+import { motion } from "framer-motion";
+import AuctionCard from "../components/AuctionCard";
+import { FaTruck, FaCar, FaTrailer, FaCog } from "react-icons/fa";
 
 function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [selectedCards, setSelectedCards] = useState([]);
   const [openDropdown, setOpenDropdown] = useState(null);
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
   const slides = [
     {
-      image: '/assets/images/images/Property 1=P1.png',
-      title: '',
-      subtitle: ''
+      image: "/assets/images/images/Property 1=P1.png",
+      title: "",
+      subtitle: "",
     },
     {
-      image: '/assets/images/images/Property 1=P2.png',
-      title: '',
-      subtitle: ''
+      image: "/assets/images/images/Property 1=P2.png",
+      title: "",
+      subtitle: "",
     },
     {
-      image: '/assets/images/images/Property 1=P3.png',
-      title: '',
-      subtitle: ''
-    } ,
-     {
-      image: '/assets/images/images/Modern Truck .png',
-      title: '',
-      subtitle: ''
-    }
+      image: "/assets/images/images/Property 1=P3.png",
+      title: "",
+      subtitle: "",
+    },
+    {
+      image: "/assets/images/images/Modern Truck .png",
+      title: "",
+      subtitle: "",
+    },
   ];
-  const images = ['/assets/images/images/p1.jpeg', '/assets/images/images/p2.jpeg'];
+  const images = [
+    "/assets/images/images/p1.jpeg",
+    "/assets/images/images/p2.jpeg",
+  ];
 
   const vehicles = [
     {
       id: 1,
-      title: 'MERCEDES',
-      price: '2500000',
-      minPrice: '205000',
-      serialNumber: '12345',
-      model: 'BENZ',
+      title: "MERCEDES",
+      price: "2500000",
+      minPrice: "205000",
+      serialNumber: "12345",
+      model: "BENZ",
       auctionCount: 3,
-      remainingTime: '08:15:02',
-      image: '/assets/images/trucks/Frame 113.png',
-      status: 'Opening'
+      remainingTime: "08:15:02",
+      image: "/assets/images/trucks/Frame 113.png",
+      status: "Opening",
     },
     // ...باقي البيانات
   ];
@@ -55,21 +57,20 @@ function Home() {
   const filteredVehicles = vehicles;
 
   const nextSlide = () => setCurrentSlide((p) => (p + 1) % slides.length);
-  const prevSlide = () => setCurrentSlide((p) => (p - 1 + slides.length) % slides.length);
+  const prevSlide = () =>
+    setCurrentSlide((p) => (p - 1 + slides.length) % slides.length);
 
   const toggleCategory = (category) => {
-    setSelectedCategories(prev =>
+    setSelectedCategories((prev) =>
       prev.includes(category)
-        ? prev.filter(c => c !== category)
+        ? prev.filter((c) => c !== category)
         : [...prev, category]
     );
   };
 
   const toggleCardSelection = (id) => {
-    setSelectedCards(prev =>
-      prev.includes(id)
-        ? prev.filter(cardId => cardId !== id)
-        : [...prev, id]
+    setSelectedCards((prev) =>
+      prev.includes(id) ? prev.filter((cardId) => cardId !== id) : [...prev, id]
     );
   };
 
@@ -100,79 +101,86 @@ function Home() {
 
   return (
     <div dir="rtl" className="flex flex-col bg-gray-50 text-[#0b0b0b]">
-     
+      {/* HERO SLIDER */}
+      <section className="relative h-[540px] overflow-hidden">
+        <div
+          className="absolute inset-0 flex transition-transform duration-700 ease-in-out"
+          style={{ transform: `translateX(${currentSlide * 100}%)` }}
+        >
+          {slides.map((slide, idx) => (
+            <div
+              key={idx}
+              className="relative w-full h-full flex-shrink-0"
+              style={{ minWidth: "100%" }}
+            >
+              <img
+                src={encodeURI(slide.image)}
+                alt={slide.title}
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+            </div>
+          ))}
+        </div>
 
-{/* HERO SLIDER */}
-<section className="relative h-[540px] overflow-hidden">
-  <div className="absolute inset-0 flex transition-transform duration-700 ease-in-out"
-    style={{ transform: `translateX(${currentSlide * 100}%)` }}>
-    {slides.map((slide, idx) => (
-      <div
-        key={idx}
-        className="relative w-full h-full flex-shrink-0"
-        style={{ minWidth: '100%' }}
-      >
-        <img
-          src={encodeURI(slide.image)}
-          alt={slide.title}
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-        
-      </div>
-    ))}
-  </div>
+        {/* Slider Controls */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 flex items-center gap-3">
+          {slides.map((_, idx) => (
+            <button
+              key={idx}
+              onClick={() => setCurrentSlide(idx)}
+              className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                idx === currentSlide
+                  ? "bg-white w-8"
+                  : "bg-white/40 hover:bg-white/60"
+              }`}
+              aria-label={`انتقل إلى الشريحة ${idx + 1}`}
+            />
+          ))}
+        </div>
+      </section>
 
-  
-  {/* Slider Controls */}
-  <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 flex items-center gap-3">
-    {slides.map((_, idx) => (
-      <button
-        key={idx}
-        onClick={() => setCurrentSlide(idx)}
-        className={`w-3 h-3 rounded-full transition-all duration-300 ${
-          idx === currentSlide
-            ? 'bg-white w-8'
-            : 'bg-white/40 hover:bg-white/60'
-        }`}
-        aria-label={`انتقل إلى الشريحة ${idx + 1}`}
-      />
-    ))}
-  </div>
-</section>
-
-
-     
-
-
-{/* BRANDS STRIP (mobile-visible) */}
-<section className="py-6 bg-white">
-  <div className="max-w-7xl mx-auto px-6">
-    <div className="relative w-full overflow-hidden">
-      <style>{`
-        /* repeat a block of images then duplicate the block for a seamless loop */
+      {/* BRANDS STRIP (mobile-visible) */}
+      <section className="py-6 bg-white">
+        <div className=" ">
+          <div className="relative w-full overflow-hidden">
+            <style>{`
+        /* Infinite marquee animation - enter left, exit right, seamless loop */
         @keyframes marquee {
-          0% { transform: translateX(0%); }
-          100% { transform: translateX(-50%); } /* move exactly one block width (half the track) */
+          0% { 
+            transform: translateX(50%);
+          }
+          100% { 
+            transform: translateX(0%);
+          }
+        }
+
+        .marquee-container {
+          position: relative;
+          width: 100%;
+          overflow: hidden;
         }
 
         .marquee-track {
           display: flex;
           align-items: center;
-          width: max-content; /* shrinkwrap so duplicate block sits right after */
-          gap: 0rem;
+          width: max-content;
+          gap: 0;
           animation: marquee 90s linear infinite;
+          will-change: transform;
         }
 
-        .marquee-track:hover { animation-play-state: paused; }
+        .marquee-track:hover { 
+          animation-play-state: paused; 
+        }
 
         .marquee-item {
           flex: 0 0 auto;
           display: flex;
           align-items: center;
           justify-content: center;
-          padding-inline: 0rem;
-          width: 200px; /* fixed width to fill the div */
-          height: 100px; /* fixed height */
+          padding-inline: 0;
+          width: 200px;
+          height: 100px;
         }
 
         /* Button background animation */
@@ -198,45 +206,55 @@ function Home() {
         }
       `}</style>
 
-      {(() => {
-        // build a repeated block then duplicate it so translateX(-50%) loops seamlessly
-        const repeat = 2 ; // number of times to repeat the images inside the block (increase to fill wide screens)
-        const block = Array.from({ length: repeat }).flatMap(() => images);
-        const full = [...block, ...block]; // two identical halves
-        return (
-          <div className="marquee-track" aria-hidden="false">
-            {full.map((img, idx) => (
-              <div key={idx} className="marquee-item">
-                <img
-                  src={encodeURI(img)}
-                  alt={`brand-${idx}`}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-            ))}
+            <div className="marquee-container">
+              {(() => {
+                // Create enough repetitions to ensure seamless infinite scroll
+                // Duplicate the images block multiple times, then duplicate the whole block for seamless loop
+                const repeatCount = 3; // Repeat images this many times per block
+                const block = Array.from({ length: repeatCount }).flatMap(
+                  () => images
+                );
+
+                // Create two identical halves - when animation moves -50%, it seamlessly loops
+                const fullTrack = [...block, ...block];
+
+                return (
+                  <div className="marquee-track" aria-hidden="false">
+                    {fullTrack.map((img, idx) => (
+                      <div key={idx} className="marquee-item">
+                        <img
+                          src={encodeURI(img)}
+                          alt={`brand-${idx}`}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    ))}
+                  </div>
+                );
+              })()}
+            </div>
           </div>
-        );
-      })()}
-    </div>
-  </div>
-</section>
-
-
+        </div>
+      </section>
 
       {/* AUCTIONS GRID */}
       <section className="py-14">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex items-center justify-between mb-8">
             <h2 className="text-3xl font-bold text-right">المزايدات</h2>
-<<<<<<< HEAD
             <Link to="/auctions" className="inline-flex items-center">
-=======
-            <Link to="/auctions" className="inline-flex items-center">
->>>>>>> 61f399edb580668936786a159694d25045b0a491
               <span className="group button-animate inline-flex items-center gap-3 border-2 border-red-500 px-4 py-2 rounded-lg transition-colors duration-200 hover:bg-red-500 hover:text-white">
                 {/* أيقونة داخل دائرة */}
                 <span className="flex items-center justify-center w-8 h-8 rounded-full border-2 border-red-500 group-hover:border-white group-hover:bg-white/20 transition-all">
-                  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <svg
+                    className="w-4 h-4"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
                     <path d="M12 6v6l4 2" />
                     <circle cx="12" cy="12" r="10" />
                   </svg>
@@ -253,7 +271,10 @@ function Home() {
           </div>
 
           <div className="flex justify-center mt-8">
-            <Link to="/auctions" className="inline-flex items-center gap-2 text-red-500 hover:text-red-700 font-medium">
+            <Link
+              to="/auctions"
+              className="inline-flex items-center gap-2 text-red-500 hover:text-red-700 font-medium"
+            >
               عرض المزيد
               <ChevronLeftIcon className="w-5 h-5" />
             </Link>
@@ -264,11 +285,19 @@ function Home() {
       {/* USER TYPES - Figma style with decorations */}
       <section className="relative py-20 bg-white overflow-hidden">
         {/* decorative images (placed in public/assets/images/images/) */}
-       <img src="/assets/images/images/Group 2 (1).png" alt="decor-left" className="block absolute -left-12 lg:-left-24 top-1/2 -translate-y-1/2 w-40 lg:w-80 pointer-events-none" style={{ transform: 'scaleX(-1)' }} />
+        <img
+          src="/assets/images/images/Group 2 (1).png"
+          alt="decor-left"
+          className="block absolute -left-12 lg:-left-24 top-1/2 -translate-y-1/2 w-40 lg:w-80 pointer-events-none"
+          style={{ transform: "scaleX(-1)" }}
+        />
 
-       <img src="/assets/images/images/Group 2 (1) copy.png" alt="decor-right" className="block absolute -right-12 lg:-right-24 top-1/2 -translate-y-1/2 w-40 lg:w-80 pointer-events-none" />
-       
-       
+        <img
+          src="/assets/images/images/Group 2 (1) copy.png"
+          alt="decor-right"
+          className="block absolute -right-12 lg:-right-24 top-1/2 -translate-y-1/2 w-40 lg:w-80 pointer-events-none"
+        />
+
         <div className="max-w-4xl mx-auto px-6 relative z-10">
           <h2 className="text-3xl font-bold text-right mb-8">بنود المزايدات</h2>
 
@@ -283,15 +312,30 @@ function Home() {
 
                 <ul className="space-y-4 text-right mb-5">
                   {[
-                    'يمكنك حفظ السيارات التي أعجبتك',
-                    'يمكنك تصفح جميع أنواع السيارات',
-                    'يمكنك كتابة تعليقات',
-                    'يمكنك البحث عن أي نوع سيارة'
-
+                    "يمكنك حفظ السيارات التي أعجبتك",
+                    "يمكنك تصفح جميع أنواع السيارات",
+                    "يمكنك كتابة تعليقات",
+                    "يمكنك البحث عن أي نوع سيارة",
                   ].map((item, i) => (
-                    <li key={i} className="flex items-center justify-start gap-3">
+                    <li
+                      key={i}
+                      className="flex items-center justify-start gap-3"
+                    >
                       <span className="flex items-center justify-center w-7 h-7 rounded-full bg-white shadow text-green-600">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" /></svg>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="w-4 h-4"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M5 13l4 4L19 7"
+                          />
+                        </svg>
                       </span>
                       <span className="text-sm text-gray-700">{item}</span>
                     </li>
@@ -314,14 +358,30 @@ function Home() {
 
                 <ul className="space-y-4 text-right mb-6">
                   {[
-                    'يجب إدخال السعر الأدنى - المحدث للزيادة',
-                    'بمجرد الإيداع تبدأ على الفور بالمزايدات',
-                    'يمكنك إسترداد المبلغ إذا لم يتم قبول العرض',
-                    'الدفع من خلال بطاقات آمنة'
+                    "يجب إدخال السعر الأدنى - المحدث للزيادة",
+                    "بمجرد الإيداع تبدأ على الفور بالمزايدات",
+                    "يمكنك إسترداد المبلغ إذا لم يتم قبول العرض",
+                    "الدفع من خلال بطاقات آمنة",
                   ].map((item, i) => (
-                    <li key={i} className="flex items-center justify-start gap-3">
+                    <li
+                      key={i}
+                      className="flex items-center justify-start gap-3"
+                    >
                       <span className="flex items-center justify-center w-7 h-7 rounded-full bg-white shadow text-green-600">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" /></svg>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="w-4 h-4"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M5 13l4 4L19 7"
+                          />
+                        </svg>
                       </span>
                       <span className="text-sm text-gray-700">{item}</span>
                     </li>
@@ -329,12 +389,24 @@ function Home() {
                 </ul>
 
                 <div className="flex items-center justify-center gap-4 mb-6">
-                  <img src="/assets/images/icons/2560px-Mada_Logo.svg 1.png" alt="paypal" className="h-6" />
-                  <img src="/assets/images/icons/logos_visa.png" alt="visa" className="h-6" />
-                  <img src="/assets/images/icons/icons.png" alt="mastercard" className="h-6" />
+                  <img
+                    src="/assets/images/icons/2560px-Mada_Logo.svg 1.png"
+                    alt="paypal"
+                    className="h-6"
+                  />
+                  <img
+                    src="/assets/images/icons/logos_visa.png"
+                    alt="visa"
+                    className="h-6"
+                  />
+                  <img
+                    src="/assets/images/icons/icons.png"
+                    alt="mastercard"
+                    className="h-6"
+                  />
                 </div>
 
-                 <button className=" flex items-center justify-center mt-2  w-48 mx-auto bg-[#f2b400] hover:bg-[#d19b00] text-[#0b0b0b] font-medium py-3 rounded-lg shadow ">
+                <button className=" flex items-center justify-center mt-2  w-48 mx-auto bg-[#f2b400] hover:bg-[#d19b00] text-[#0b0b0b] font-medium py-3 rounded-lg shadow ">
                   بدأ التزايد الآن
                 </button>
               </div>
@@ -366,18 +438,18 @@ function Home() {
           {/* category chips */}
           <div className="flex items-center gap-3 flex-wrap mb-6">
             {[
-              { name: 'شاحنات', icon: FaTruck },
-              { name: 'سيارات', icon: FaCar },
-              { name: 'مقطورات', icon: FaTrailer },
-              { name: 'قطع غيار', icon: FaCog },
+              { name: "شاحنات", icon: FaTruck },
+              { name: "سيارات", icon: FaCar },
+              { name: "مقطورات", icon: FaTrailer },
+              { name: "قطع غيار", icon: FaCog },
             ].map(({ name, icon: Icon }) => (
               <button
                 key={name}
                 onClick={() => toggleCategory(name)}
                 className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-colors ${
                   selectedCategories.includes(name)
-                    ? 'bg-yellow-500 text-white'
-                    : 'bg-gray-100 hover:bg-gray-200 text-[#0b0b0b]'
+                    ? "bg-yellow-500 text-white"
+                    : "bg-gray-100 hover:bg-gray-200 text-[#0b0b0b]"
                 }`}
               >
                 <Icon className="w-4 h-4" />
@@ -389,11 +461,14 @@ function Home() {
           {/* filters row */}
           <div className="flex items-center gap-3 flex-wrap mb-8">
             {[
-              { name: 'المدينة', options: ['الرياض', 'جدة', 'الدمام', 'مكة'] },
-              { name: 'الماركة', options: ['مرسيدس', 'فولفو', 'مان', 'سكانيا'] },
-              { name: 'الموديل', options: ['TGS', 'FH', 'TGX', 'R'] },
-              { name: 'سنة الصنع', options: ['2020', '2021', '2022', '2023'] },
-              { name: 'حالة السيارة', options: ['جديد', 'مستعمل', 'مصدوم'] },
+              { name: "المدينة", options: ["الرياض", "جدة", "الدمام", "مكة"] },
+              {
+                name: "الماركة",
+                options: ["مرسيدس", "فولفو", "مان", "سكانيا"],
+              },
+              { name: "الموديل", options: ["TGS", "FH", "TGX", "R"] },
+              { name: "سنة الصنع", options: ["2020", "2021", "2022", "2023"] },
+              { name: "حالة السيارة", options: ["جديد", "مستعمل", "مصدوم"] },
             ].map(({ name, options }) => (
               <div key={name} className="relative">
                 <button
@@ -430,7 +505,9 @@ function Home() {
                 key={v.id}
                 onClick={() => toggleCardSelection(v.id)}
                 className={`cursor-pointer transition-all ${
-                  selectedCards.includes(v.id) ? 'ring-2 ring-blue-500 rounded-2xl' : ''
+                  selectedCards.includes(v.id)
+                    ? "ring-2 ring-blue-500 rounded-2xl"
+                    : ""
                 }`}
               >
                 <AuctionCard auction={v} />
@@ -452,14 +529,30 @@ function Home() {
                 className="h-16 w-16 rounded-full object-cover shadow-md border-2 border-white"
               />
               <div className="text-right">
-                <h3 className="text-xl font-semibold">شركة علي عبدالله الفريج</h3>
-                <p className="text-sm text-gray-600">يوجد لدينا حراج كل يوم الخميس والجمعة والسبت</p>
+                <h3 className="text-xl font-semibold">
+                  شركة علي عبدالله الفريج
+                </h3>
+                <p className="text-sm text-gray-600">
+                  يوجد لدينا حراج كل يوم الخميس والجمعة والسبت
+                </p>
               </div>
             </div>
 
             <div className="hidden sm:flex items-center gap-4">
-              <a href="https://youtu.be/bKZtjt27AFg?si=SOD54qWDcOt0zcrM" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-sm text-gray-600">
-                <svg className="w-5 h-5 text-red-600" viewBox="0 0 24 24" fill="currentColor"><path d="M23 7s-.2-1.7-.8-2.4C21.4 4 20.4 4 20 4H4C3.6 4 2.6 4 1.8 4.6 1.2 5.3 1 7 1 7S1 8.8 1.8 9.5C2.6 10 3.6 10 4 10h16c.4 0 1.4 0 2.2-.5.6-.7.8-2.3.8-2.3z"/><path d="M10 8l6 4-6 4z" fill="#fff"/></svg>
+              <a
+                href="https://youtu.be/bKZtjt27AFg?si=SOD54qWDcOt0zcrM"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 text-sm text-gray-600"
+              >
+                <svg
+                  className="w-5 h-5 text-red-600"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path d="M23 7s-.2-1.7-.8-2.4C21.4 4 20.4 4 20 4H4C3.6 4 2.6 4 1.8 4.6 1.2 5.3 1 7 1 7S1 8.8 1.8 9.5C2.6 10 3.6 10 4 10h16c.4 0 1.4 0 2.2-.5.6-.7.8-2.3.8-2.3z" />
+                  <path d="M10 8l6 4-6 4z" fill="#fff" />
+                </svg>
                 youtu.be/bKZtjt27AFg
               </a>
             </div>
@@ -490,7 +583,6 @@ function Home() {
           </div>
         </div>
       </section>
-
     </div>
   );
 }
