@@ -14,6 +14,7 @@ import Auctions from './pages/Auctions';
 
 import Advertisement from './pages/Advertisement';
 import Saved from './pages/Saved';
+import ChineseCars from './pages/ChineseCars';
 import CarDetails from './pages/CarDetails';
 import PaymentPage from './pages/PaymentPage';
 import LiveBroadcast from './pages/LiveBroadcast';
@@ -37,6 +38,7 @@ function App() {
             <Route path="/advertisement" element={<Advertisement />} />
             <Route path="/about" element={<About />} />
             <Route path="/saved" element={<Saved />} />
+            <Route path="/chinese-cars" element={<ChineseCars />} />
             <Route path="/car-details" element={<CarDetails />} />
             <Route path="/payment" element={<PaymentPage />} />
             <Route path="/live-broadcast" element={<LiveBroadcast />} />

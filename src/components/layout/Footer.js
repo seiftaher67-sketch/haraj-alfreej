@@ -16,7 +16,7 @@ const Footer = () => {
                 </p>
                 <div className="mt-4 flex items-right justify-start gap-2 text-sm text-yellow-400">
                   <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 7 7 13 7 13s7-6 7-13c0-3.87-3.13-7-7-7z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                  <a href="mailto:Alfourij@hotmail.com" className="text-gray-300 hover:text-white">الموقع الخاص بالفريج</a>
+                  <a href="https://maps.app.goo.gl/XL6Jp84W9SLgSeoQ7?g_st=awb" className="text-gray-300 hover:text-white">الموقع الخاص بالفريج</a>
                 </div>
               </div>
             </div>

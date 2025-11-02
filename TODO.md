@@ -1,4 +1,6 @@
-- [x] Update "المزايدات" h2: Change class to "text-2xl font-bold text-right"
-- [x] Update "بنود المزايدات" h2: Change "text-3xl" to "text-2xl"
-- [ ] Update "الفئات" h2: Add "text-right" to the class
-- [ ] Update "الأكثر شهرة" h3: Change to h2, update class to "text-2xl font-bold text-right mb-4"
+ع# TODO: Add Chinese Cars Page and Navbar Item
+
+- [x] Create src/pages/ChineseCars.js page similar to Saved.js for displaying Chinese car auctions
+- [x] Update src/App.js to import ChineseCars and add route /chinese-cars
+- [x] Update src/components/layout/Navbar.js to add "السيارات الصينيه" link after "المفضلة" with car icon in both desktop and mobile menus
+- [x] Test navigation to the new page
