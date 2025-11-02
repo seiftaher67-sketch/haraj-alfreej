@@ -6,7 +6,7 @@ export default function Auctions() {
   const dummyAuctions = [
     {
       id: 1,
-      image: 'https://images.unsplash.com/photo-1605100804763-247f57d3c6b8?q=80&w=600',
+      image: '/assets/images/trucks/Frame 112.png',
       title: 'M.A.N - 26.320 TGS',
       price: '4000',
       minPrice: '500',
@@ -19,7 +19,7 @@ export default function Auctions() {
     },
     {
       id: 2,
-      image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=600',
+      image: '/assets/images/trucks/Frame 113.png',
       title: 'Mercedes-Benz Actros',
       price: '5500',
       minPrice: '800',
@@ -32,7 +32,7 @@ export default function Auctions() {
     },
     {
       id: 3,
-      image: 'https://images.unsplash.com/photo-1584464491033-06628f3a6b7b?q=80&w=600',
+      image: '/assets/images/trucks/Frame 114.png',
       title: 'Volvo FH16',
       price: '6200',
       minPrice: '1000',
@@ -45,7 +45,7 @@ export default function Auctions() {
     },
     {
       id: 4,
-      image: 'https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?q=80&w=600',
+      image: '/assets/images/trucks/Frame 113.png',
       title: 'Scania R500',
       price: '4800',
       minPrice: '600',
@@ -58,7 +58,7 @@ export default function Auctions() {
     },
     {
       id: 5,
-      image: 'https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?q=80&w=600',
+      image: '/assets/images/trucks/Frame 118.png',
       title: 'DAF XF105',
       price: '5200',
       minPrice: '700',
@@ -71,7 +71,7 @@ export default function Auctions() {
     },
     {
       id: 6,
-      image: 'https://images.unsplash.com/photo-1605100804763-247f57d3c6b8?q=80&w=600',
+      image: '/assets/images/trucks/Frame 119.png',
       title: 'Iveco Stralis',
       price: '4500',
       minPrice: '550',
