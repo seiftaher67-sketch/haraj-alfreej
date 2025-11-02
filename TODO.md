@@ -1,6 +1,3 @@
-ع# TODO: Add Chinese Cars Page and Navbar Item
+# TODO: Add Google Maps Link to Navbar Location Button
 
-- [x] Create src/pages/ChineseCars.js page similar to Saved.js for displaying Chinese car auctions
-- [x] Update src/App.js to import ChineseCars and add route /chinese-cars
-- [x] Update src/components/layout/Navbar.js to add "السيارات الصينيه" link after "المفضلة" with car icon in both desktop and mobile menus
-- [x] Test navigation to the new page
+- [x] Edit `src/components/layout/Navbar.js` to replace the "الموقع" button with an anchor tag linking to https://maps.app.goo.gl/XL6Jp84W9SLgSeoQ7?g_st=awb, opening in a new tab.

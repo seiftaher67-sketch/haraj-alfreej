@@ -143,10 +143,10 @@ export default function Navbar({ onLoginClick }) {
 
             {/* left side (location or toggle) */}
             <div className="flex items-center gap-6 text-[#0b0b0b]">
-              <button className="flex items-center gap-2 text-sm hover:underline">
+              <a href="https://maps.app.goo.gl/XL6Jp84W9SLgSeoQ7?g_st=awb" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm hover:underline">
                 <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 11.5a3 3 0 100-6 3 3 0 000 6z" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/><path d="M20.5 11.5c0 6-8.5 11.5-8.5 11.5S3.5 17.5 3.5 11.5a8.5 8.5 0 1117 0z" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
                 <span className="font-bold">الموقع</span>
-              </button>
+              </a>
             </div>
           </div>
         </div>
