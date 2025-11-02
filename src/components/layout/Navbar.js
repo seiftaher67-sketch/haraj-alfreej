@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { TruckIcon } from '@heroicons/react/24/outline';
 
 export default function Navbar({ onLoginClick }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
   const location = useLocation();
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
@@ -38,7 +40,9 @@ export default function Navbar({ onLoginClick }) {
                 <input
                   id="site-search"
                   placeholder="البحث في 500 شاحنة"
-                  className="w-full text-sm bg-white rounded-full py-2 px-3 pr-10 pl-10 shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#f2b400]/30"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full text-sm text-black bg-white rounded-full py-2 px-3 pr-10 pl-10 shadow-sm placeholder-black focus:outline-none focus:ring-2 focus:ring-[#f2b400]/30"
                 />
                 {/* magnifier icon */}
                 <div className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400">
@@ -55,7 +59,9 @@ export default function Navbar({ onLoginClick }) {
                 <input
                   id="site-search"
                   placeholder="البحث في 500 شاحنة"
-                  className="w-full text-sm bg-white rounded-full py-3 px-4 pr-12 pl-12 shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#f2b400]/30"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full text-sm text-black bg-white rounded-full py-3 px-4 pr-12 pl-12 shadow-sm placeholder-black focus:outline-none focus:ring-2 focus:ring-[#f2b400]/30"
                 />
                 {/* magnifier icon */}
                 <div className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400">
@@ -92,7 +98,7 @@ export default function Navbar({ onLoginClick }) {
                 </svg>
                 الفئات
               </Link>
-              <Link to="/" className="flex items-center gap-2 hover:bg-[#0b0b0b]/10 px-3 py-2 rounded-lg transition-colors duration-200">
+              <Link to="/auctions" className="flex items-center gap-2 hover:bg-[#0b0b0b]/10 px-3 py-2 rounded-lg transition-colors duration-200">
                 <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
@@ -123,9 +129,7 @@ export default function Navbar({ onLoginClick }) {
                 المفضلة
               </Link>
               <Link to="/chinese-cars" className="flex items-center gap-2 hover:bg-[#0b0b0b]/10 px-3 py-2 rounded-lg transition-colors duration-200">
-                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                </svg>
+                <TruckIcon className="w-5 h-5" />
                 السيارات الصينيه
               </Link>
             </div>
@@ -183,7 +187,7 @@ export default function Navbar({ onLoginClick }) {
                   </svg>
                   الفئات
                 </Link>
-                <Link to="/" onClick={closeMenu} className="flex items-center gap-3 hover:bg-[#0b0b0b]/10 px-4 py-3 rounded-lg transition-colors duration-200 text-lg">
+                <Link to="/auctions" onClick={closeMenu} className="flex items-center gap-3 hover:bg-[#0b0b0b]/10 px-4 py-3 rounded-lg transition-colors duration-200 text-lg">
                   <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
@@ -214,9 +218,7 @@ export default function Navbar({ onLoginClick }) {
                   المفضلة
                 </Link>
                 <Link to="/chinese-cars" onClick={closeMenu} className="flex items-center gap-3 hover:bg-[#0b0b0b]/10 px-4 py-3 rounded-lg transition-colors duration-200 text-lg">
-                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                  </svg>
+                  <TruckIcon className="w-6 h-6" />
                   السيارات الصينيه
                 </Link>
               </nav>

@@ -29,8 +29,8 @@ const CarDetails = () => {
     "/assets/images/trucks/Frame 113.png",
     "/assets/images/trucks/Frame 114.png",
     "/assets/images/trucks/Frame 117.png",
-    "/assets/images/trucks/Frame 117.png",
-    "/assets/images/trucks/Frame 117.png",
+    "/assets/images/trucks/Frame 118.png",
+    "/assets/images/trucks/Frame 119.png",
   ];
 
   const similarCars = [
@@ -97,7 +97,7 @@ const CarDetails = () => {
         <h1 className="text-2xl md:text-3xl font-bold mb-6">{auction.title}</h1>
 
         {/* Gallery: thumbnails + main preview */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-[70%_30%] gap-8 mb-8">
           {/* main image (left side on RTL, visually left) */}
           <div className="relative order-1 md:order-1">
             <img

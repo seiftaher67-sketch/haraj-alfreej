@@ -17,7 +17,7 @@ const PaymentPage = () => {
   const [expiryDate, setExpiryDate] = useState(null);
   const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
 
-  const isFormComplete = cardData.name.trim() && cardData.number.trim() && cardData.expiry.trim() && cardData.cvv.trim();
+  const isFormComplete = selectedMethod !== null && locationData !== null && cardData.name.trim() && cardData.number.trim() && cardData.expiry.trim() && cardData.cvv.trim();
 
   const methods = [
     {
@@ -194,7 +194,10 @@ const PaymentPage = () => {
 
               <button
                 type="submit"
-                className="w-full bg-[#f2b400] text-black font-bold py-3 rounded-lg hover:bg-[#d4a200] transition"
+                disabled={!isFormComplete}
+                className={`w-full bg-[#f2b400] text-black font-bold py-3 rounded-lg transition ${
+                  isFormComplete ? 'hover:bg-[#d4a200]' : 'opacity-50 cursor-not-allowed'
+                }`}
               >
                 ادفع الآن
               </button>
