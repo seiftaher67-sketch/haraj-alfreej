@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import AuctionCard from '../components/AuctionCard';
-import { FaTruck, FaCar, FaTrailer, FaCog } from 'react-icons/fa';
+import React, { useState } from "react";
+import AuctionCard from "../components/AuctionCard";
+import { FaTruck, FaCar, FaTrailer, FaCog } from "react-icons/fa";
 
 const Categories = () => {
   const [selectedCategories, setSelectedCategories] = useState([]);
@@ -8,49 +8,47 @@ const Categories = () => {
   const [openDropdown, setOpenDropdown] = useState(null);
 
   const categories = [
-    { name: 'شاحنات', icon: FaTruck },
-    { name: 'سيارات', icon: FaCar },
-    { name: 'مقطورات', icon: FaTrailer },
-    { name: 'قطع غيار', icon: FaCog },
+    { name: "شاحنات", icon: FaTruck },
+    { name: "سيارات", icon: FaCar },
+    { name: "مقطورات", icon: FaTrailer },
+    { name: "قطع غيار", icon: FaCog },
   ];
 
   const filters = [
-    { name: 'المدينة', options: ['الرياض', 'جدة', 'الدمام', 'مكة'] },
-    { name: 'الماركة', options: ['مرسيدس', 'فولفو', 'مان', 'سكانيا'] },
-    { name: 'الموديل', options: ['TGS', 'FH', 'TGX', 'R'] },
-    { name: 'سنة الصنع', options: ['2020', '2021', '2022', '2023'] },
-    { name: 'حالة السيارة', options: ['جديد', 'مستعمل', 'مصدوم'] },
+    { name: "المدينة", options: ["الرياض", "جدة", "الدمام", "مكة"] },
+    { name: "الماركة", options: ["مرسيدس", "فولفو", "مان", "سكانيا"] },
+    { name: "الموديل", options: ["TGS", "FH", "TGX", "R"] },
+    { name: "سنة الصنع", options: ["2020", "2021", "2022", "2023"] },
+    { name: "حالة السيارة", options: ["جديد", "مستعمل", "مصدوم"] },
   ];
 
   const vehicles = [
     {
-      id: 1,
-      title: 'MERCEDES',
-      price: '2500000',
-      minPrice: '205000',
-      serialNumber: '12345',
-      model: 'BENZ',
-      auctionCount: 3,
-      remainingTime: '08:15:02',
-      image: '/assets/images/trucks/Frame 113.png',
-      status: 'Opening'
+      // id: 1,
+      // title: 'MERCEDES',
+      // price: '2500000',
+      // minPrice: '205000',
+      // serialNumber: '12345',
+      // model: 'BENZ',
+      // auctionCount: 3,
+      // remainingTime: '08:15:02',
+      // image: '/assets/images/trucks/Frame 113.png',
+      // status: 'Opening'
     },
     // Add more vehicle data as needed
   ];
 
   const toggleCategory = (category) => {
-    setSelectedCategories(prev =>
+    setSelectedCategories((prev) =>
       prev.includes(category)
-        ? prev.filter(c => c !== category)
+        ? prev.filter((c) => c !== category)
         : [...prev, category]
     );
   };
 
   const toggleCardSelection = (id) => {
-    setSelectedCards(prev =>
-      prev.includes(id)
-        ? prev.filter(cardId => cardId !== id)
-        : [...prev, id]
+    setSelectedCards((prev) =>
+      prev.includes(id) ? prev.filter((cardId) => cardId !== id) : [...prev, id]
     );
   };
 
@@ -67,7 +65,9 @@ const Categories = () => {
             <h2 className="text-2xl font-bold">الفئات</h2>
 
             <div className="flex items-center gap-3">
-              <button className="bg-black text-white px-6 py-2 rounded-lg">بحث</button>
+              <button className="bg-black text-white px-6 py-2 rounded-lg">
+                بحث
+              </button>
             </div>
           </div>
 
@@ -79,8 +79,8 @@ const Categories = () => {
                 onClick={() => toggleCategory(name)}
                 className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-colors ${
                   selectedCategories.includes(name)
-                    ? 'bg-blue-500 text-white'
-                    : 'bg-gray-100 hover:bg-gray-200 text-[#0b0b0b]'
+                    ? "bg-blue-500 text-white"
+                    : "bg-gray-100 hover:bg-gray-200 text-[#0b0b0b]"
                 }`}
               >
                 <Icon className="w-4 h-4" />
@@ -119,14 +119,15 @@ const Categories = () => {
             ))}
           </div>
 
-         
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {vehicles.map((v) => (
               <div
                 key={v.id}
                 onClick={() => toggleCardSelection(v.id)}
                 className={`cursor-pointer transition-all ${
-                  selectedCards.includes(v.id) ? 'ring-2 ring-blue-500 rounded-2xl' : ''
+                  selectedCards.includes(v.id)
+                    ? "ring-2 ring-blue-500 rounded-2xl"
+                    : ""
                 }`}
               >
                 <AuctionCard auction={v} />

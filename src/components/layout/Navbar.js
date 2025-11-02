@@ -1,27 +1,51 @@
-import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { TruckIcon } from '@heroicons/react/24/outline';
+import React, { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { TruckIcon } from "@heroicons/react/24/outline";
 
 export default function Navbar({ onLoginClick }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedNavItem, setSelectedNavItem] = useState("");
   const location = useLocation();
+
+  // Update selected nav item based on current route
+  useEffect(() => {
+    const path = location.pathname;
+    setSelectedNavItem(path);
+  }, [location.pathname]);
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const closeMenu = () => setIsMenuOpen(false);
 
   const scrollToLiveBroadcast = () => {
-    const element = document.getElementById('live-broadcast');
+    const element = document.getElementById("live-broadcast");
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: "smooth" });
     }
   };
 
-  const handleLiveBroadcastClick = (e) => {
-    if (location.pathname === '/') {
+  const handleNavItemClick = (path, e) => {
+    // Update selected nav item
+    setSelectedNavItem(path);
+
+    // Handle special case for live-broadcast on home page
+    if (path === "/live-broadcast" && location.pathname === "/") {
       e.preventDefault();
       scrollToLiveBroadcast();
     }
+
+    // Close mobile menu when navigating
+    if (isMenuOpen) {
+      closeMenu();
+    }
+  };
+
+  // Check if a nav item is active
+  const isNavItemActive = (path) => {
+    if (path === "/") {
+      return location.pathname === "/";
+    }
+    return location.pathname.startsWith(path);
   };
 
   return (
@@ -32,7 +56,11 @@ export default function Navbar({ onLoginClick }) {
           {/* logo and search on small screens, logo on large */}
           <div className="flex items-center gap-3 w-full sm:w-auto">
             <Link to="/" className="flex items-center gap-3 flex-shrink-0">
-              <img src="/assets/images/images/55PNG.PNG" alt="الفريج" className="h-12 w-auto object-contain" />
+              <img
+                src="/assets/images/images/55PNG.PNG"
+                alt="الفريج"
+                className="h-12 w-auto object-contain"
+              />
             </Link>
             {/* search on small screens */}
             <div className="flex-1 sm:hidden">
@@ -46,7 +74,20 @@ export default function Navbar({ onLoginClick }) {
                 />
                 {/* magnifier icon */}
                 <div className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-4.35-4.35M11 19a8 8 0 100-16 8 8 0 000 16z" /></svg>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-4 w-4"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M21 21l-4.35-4.35M11 19a8 8 0 100-16 8 8 0 000 16z"
+                    />
+                  </svg>
                 </div>
               </div>
             </div>
@@ -65,7 +106,20 @@ export default function Navbar({ onLoginClick }) {
                 />
                 {/* magnifier icon */}
                 <div className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-4.35-4.35M11 19a8 8 0 100-16 8 8 0 000 16z" /></svg>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-5 w-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M21 21l-4.35-4.35M11 19a8 8 0 100-16 8 8 0 000 16z"
+                    />
+                  </svg>
                 </div>
               </div>
             </div>
@@ -73,11 +127,26 @@ export default function Navbar({ onLoginClick }) {
 
           {/* utility buttons */}
           <div className="flex items-center gap-4 sm:gap-6 flex-shrink-0">
-            <button onClick={onLoginClick} className="text-sm hover:text-white whitespace-nowrap">تسجيل الدخول</button>
+            <button
+              onClick={onLoginClick}
+              className="text-sm hover:text-white whitespace-nowrap"
+            >
+              تسجيل الدخول
+            </button>
             <button className="flex items-center gap-1 text-sm text-white/90 hover:text-white whitespace-nowrap">
               <span>EN</span>
-              <svg className="w-4 h-4" viewBox="0 0 20 20" fill="none" stroke="currentColor">
-                <path d="M6 8l4 4 4-4" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              <svg
+                className="w-4 h-4"
+                viewBox="0 0 20 20"
+                fill="none"
+                stroke="currentColor"
+              >
+                <path
+                  d="M6 8l4 4 4-4"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
               </svg>
             </button>
           </div>
@@ -88,67 +157,218 @@ export default function Navbar({ onLoginClick }) {
       <nav className="bg-[#f2b400]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="h-16 flex items-center justify-between">
-            
-            
             {/* main links */}
             <div className="hidden lg:flex items-center gap-8 text-[#0b0b0b] font-semibold">
-              <Link to="/categories" className="flex items-center gap-2 hover:bg-[#0b0b0b]/10 px-3 py-2 rounded-lg transition-colors duration-200">
-                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 10h16M4 14h16M4 18h16" />
+              <Link
+                to="/categories"
+                onClick={(e) => handleNavItemClick("/categories", e)}
+                className={`flex items-center gap-2 px-3 py-2 rounded-lg transition-colors duration-200 ${
+                  isNavItemActive("/categories")
+                    ? "bg-[#0b0b0b] text-white"
+                    : "hover:bg-[#0b0b0b]/10"
+                }`}
+              >
+                <svg
+                  className="w-5 h-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M4 6h16M4 10h16M4 14h16M4 18h16"
+                  />
                 </svg>
                 الفئات
               </Link>
-              <Link to="/auctions" className="flex items-center gap-2 hover:bg-[#0b0b0b]/10 px-3 py-2 rounded-lg transition-colors duration-200">
-                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              <Link
+                to="/auctions"
+                onClick={(e) => handleNavItemClick("/auctions", e)}
+                className={`flex items-center gap-2 px-3 py-2 rounded-lg transition-colors duration-200 ${
+                  isNavItemActive("/auctions")
+                    ? "bg-[#0b0b0b] text-white"
+                    : "hover:bg-[#0b0b0b]/10"
+                }`}
+              >
+                <svg
+                  className="w-5 h-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
                 </svg>
                 المزادات
               </Link>
-              <Link to="/live-broadcast" className="flex items-center gap-2 hover:bg-[#0b0b0b]/10 px-3 py-2 rounded-lg transition-colors duration-200">
-                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+              <Link
+                to="/live-broadcast"
+                onClick={(e) => handleNavItemClick("/live-broadcast", e)}
+                className={`flex items-center gap-2 px-3 py-2 rounded-lg transition-colors duration-200 ${
+                  isNavItemActive("/live-broadcast") ||
+                  (location.pathname === "/" &&
+                    selectedNavItem === "/live-broadcast")
+                    ? "bg-[#0b0b0b] text-white"
+                    : "hover:bg-[#0b0b0b]/10"
+                }`}
+              >
+                <svg
+                  className="w-5 h-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"
+                  />
                 </svg>
                 البث المباشر
               </Link>
-              <Link to="/advertisement" className="flex items-center gap-2 hover:bg-[#0b0b0b]/10 px-3 py-2 rounded-lg transition-colors duration-200">
-                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z" />
+              <Link
+                to="/advertisement"
+                onClick={(e) => handleNavItemClick("/advertisement", e)}
+                className={`flex items-center gap-2 px-3 py-2 rounded-lg transition-colors duration-200 ${
+                  isNavItemActive("/advertisement")
+                    ? "bg-[#0b0b0b] text-white"
+                    : "hover:bg-[#0b0b0b]/10"
+                }`}
+              >
+                <svg
+                  className="w-5 h-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"
+                  />
                 </svg>
                 إعلانات
               </Link>
-              <Link to="/about" className="flex items-center gap-2 hover:bg-[#0b0b0b]/10 px-3 py-2 rounded-lg transition-colors duration-200">
-                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              <Link
+                to="/about"
+                onClick={(e) => handleNavItemClick("/about", e)}
+                className={`flex items-center gap-2 px-3 py-2 rounded-lg transition-colors duration-200 ${
+                  isNavItemActive("/about")
+                    ? "bg-[#0b0b0b] text-white"
+                    : "hover:bg-[#0b0b0b]/10"
+                }`}
+              >
+                <svg
+                  className="w-5 h-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
                 </svg>
                 من نحن
               </Link>
-              <Link to="/saved" className="flex items-center gap-2 hover:bg-[#0b0b0b]/10 px-3 py-2 rounded-lg transition-colors duration-200">
-                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+              <Link
+                to="/saved"
+                onClick={(e) => handleNavItemClick("/saved", e)}
+                className={`flex items-center gap-2 px-3 py-2 rounded-lg transition-colors duration-200 ${
+                  isNavItemActive("/saved")
+                    ? "bg-[#0b0b0b] text-white"
+                    : "hover:bg-[#0b0b0b]/10"
+                }`}
+              >
+                <svg
+                  className="w-5 h-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                  />
                 </svg>
                 المفضلة
               </Link>
-              <Link to="/chinese-cars" className="flex items-center gap-2 hover:bg-[#0b0b0b]/10 px-3 py-2 rounded-lg transition-colors duration-200">
+              <Link
+                to="/chinese-cars"
+                onClick={(e) => handleNavItemClick("/chinese-cars", e)}
+                className={`flex items-center gap-2 px-3 py-2 rounded-lg transition-colors duration-200 ${
+                  isNavItemActive("/chinese-cars")
+                    ? "bg-[#0b0b0b] text-white"
+                    : "hover:bg-[#0b0b0b]/10"
+                }`}
+              >
                 <TruckIcon className="w-5 h-5" />
                 السيارات الصينيه
               </Link>
             </div>
-             
+
             {/* hamburger menu button for mobile */}
             <button
               onClick={toggleMenu}
               className="lg:hidden flex flex-col justify-center items-center w-8 h-8 text-[#0b0b0b] hover:opacity-80"
               aria-label="فتح القائمة"
             >
-              <span className={`block w-5 h-0.5 bg-current transition-transform duration-300 ${isMenuOpen ? 'rotate-45 translate-y-1' : '-translate-y-0.5'}`}></span>
-              <span className={`block w-5 h-0.5 bg-current transition-opacity duration-300 ${isMenuOpen ? 'opacity-0' : 'opacity-100'}`}></span>
-              <span className={`block w-5 h-0.5 bg-current transition-transform duration-300 ${isMenuOpen ? '-rotate-45 -translate-y-1' : 'translate-y-0.5'}`}></span>
+              <span
+                className={`block w-5 h-0.5 bg-current transition-transform duration-300 ${
+                  isMenuOpen ? "rotate-45 translate-y-1" : "-translate-y-0.5"
+                }`}
+              ></span>
+              <span
+                className={`block w-5 h-0.5 bg-current transition-opacity duration-300 ${
+                  isMenuOpen ? "opacity-0" : "opacity-100"
+                }`}
+              ></span>
+              <span
+                className={`block w-5 h-0.5 bg-current transition-transform duration-300 ${
+                  isMenuOpen ? "-rotate-45 -translate-y-1" : "translate-y-0.5"
+                }`}
+              ></span>
             </button>
 
             {/* left side (location or toggle) */}
             <div className="flex items-center gap-6 text-[#0b0b0b]">
-              <a href="https://maps.app.goo.gl/XL6Jp84W9SLgSeoQ7?g_st=awb" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm hover:underline">
-                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 11.5a3 3 0 100-6 3 3 0 000 6z" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/><path d="M20.5 11.5c0 6-8.5 11.5-8.5 11.5S3.5 17.5 3.5 11.5a8.5 8.5 0 1117 0z" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+              <a
+                href="https://maps.app.goo.gl/XL6Jp84W9SLgSeoQ7?g_st=awb"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-sm hover:underline"
+              >
+                <svg
+                  className="w-4 h-4"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                >
+                  <path
+                    d="M12 11.5a3 3 0 100-6 3 3 0 000 6z"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M20.5 11.5c0 6-8.5 11.5-8.5 11.5S3.5 17.5 3.5 11.5a8.5 8.5 0 1117 0z"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
                 <span className="font-bold">الموقع</span>
               </a>
             </div>
@@ -174,50 +394,199 @@ export default function Navbar({ onLoginClick }) {
                 className="self-end mb-8 text-[#0b0b0b] hover:opacity-80"
                 aria-label="إغلاق القائمة"
               >
-                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                <svg
+                  className="w-6 h-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M6 18L18 6M6 6l12 12"
+                  />
                 </svg>
               </button>
 
               {/* menu links */}
               <nav className="flex flex-col space-y-6 text-[#0b0b0b] font-semibold">
-                <Link to="/categories" onClick={closeMenu} className="flex items-center gap-3 hover:bg-[#0b0b0b]/10 px-4 py-3 rounded-lg transition-colors duration-200 text-lg">
-                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 10h16M4 14h16M4 18h16" />
+                <Link
+                  to="/categories"
+                  onClick={(e) => {
+                    handleNavItemClick("/categories", e);
+                    closeMenu();
+                  }}
+                  className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-colors duration-200 text-lg ${
+                    isNavItemActive("/categories")
+                      ? "bg-[#0b0b0b] text-white"
+                      : "hover:bg-[#0b0b0b]/10"
+                  }`}
+                >
+                  <svg
+                    className="w-6 h-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M4 6h16M4 10h16M4 14h16M4 18h16"
+                    />
                   </svg>
                   الفئات
                 </Link>
-                <Link to="/auctions" onClick={closeMenu} className="flex items-center gap-3 hover:bg-[#0b0b0b]/10 px-4 py-3 rounded-lg transition-colors duration-200 text-lg">
-                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                <Link
+                  to="/auctions"
+                  onClick={(e) => {
+                    handleNavItemClick("/auctions", e);
+                    closeMenu();
+                  }}
+                  className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-colors duration-200 text-lg ${
+                    isNavItemActive("/auctions")
+                      ? "bg-[#0b0b0b] text-white"
+                      : "hover:bg-[#0b0b0b]/10"
+                  }`}
+                >
+                  <svg
+                    className="w-6 h-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
                   </svg>
                   المزادات
                 </Link>
-                <Link to="/live-broadcast" onClick={closeMenu} className="flex items-center gap-3 hover:bg-[#0b0b0b]/10 px-4 py-3 rounded-lg transition-colors duration-200 text-lg">
-                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                <Link
+                  to="/live-broadcast"
+                  onClick={(e) => {
+                    handleNavItemClick("/live-broadcast", e);
+                    closeMenu();
+                  }}
+                  className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-colors duration-200 text-lg ${
+                    isNavItemActive("/live-broadcast") ||
+                    (location.pathname === "/" &&
+                      selectedNavItem === "/live-broadcast")
+                      ? "bg-[#0b0b0b] text-white"
+                      : "hover:bg-[#0b0b0b]/10"
+                  }`}
+                >
+                  <svg
+                    className="w-6 h-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"
+                    />
                   </svg>
                   البث المباشر
                 </Link>
-                <Link to="/advertisement" onClick={closeMenu} className="flex items-center gap-3 hover:bg-[#0b0b0b]/10 px-4 py-3 rounded-lg transition-colors duration-200 text-lg">
-                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z" />
+                <Link
+                  to="/advertisement"
+                  onClick={(e) => {
+                    handleNavItemClick("/advertisement", e);
+                    closeMenu();
+                  }}
+                  className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-colors duration-200 text-lg ${
+                    isNavItemActive("/advertisement")
+                      ? "bg-[#0b0b0b] text-white"
+                      : "hover:bg-[#0b0b0b]/10"
+                  }`}
+                >
+                  <svg
+                    className="w-6 h-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"
+                    />
                   </svg>
                   إعلانات
                 </Link>
-                <Link to="/about" onClick={closeMenu} className="flex items-center gap-3 hover:bg-[#0b0b0b]/10 px-4 py-3 rounded-lg transition-colors duration-200 text-lg">
-                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                <Link
+                  to="/about"
+                  onClick={(e) => {
+                    handleNavItemClick("/about", e);
+                    closeMenu();
+                  }}
+                  className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-colors duration-200 text-lg ${
+                    isNavItemActive("/about")
+                      ? "bg-[#0b0b0b] text-white"
+                      : "hover:bg-[#0b0b0b]/10"
+                  }`}
+                >
+                  <svg
+                    className="w-6 h-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
                   </svg>
                   من نحن
                 </Link>
-                <Link to="/saved" onClick={closeMenu} className="flex items-center gap-3 hover:bg-[#0b0b0b]/10 px-4 py-3 rounded-lg transition-colors duration-200 text-lg">
-                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                <Link
+                  to="/saved"
+                  onClick={(e) => {
+                    handleNavItemClick("/saved", e);
+                    closeMenu();
+                  }}
+                  className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-colors duration-200 text-lg ${
+                    isNavItemActive("/saved")
+                      ? "bg-[#0b0b0b] text-white"
+                      : "hover:bg-[#0b0b0b]/10"
+                  }`}
+                >
+                  <svg
+                    className="w-6 h-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                    />
                   </svg>
                   المفضلة
                 </Link>
-                <Link to="/chinese-cars" onClick={closeMenu} className="flex items-center gap-3 hover:bg-[#0b0b0b]/10 px-4 py-3 rounded-lg transition-colors duration-200 text-lg">
+                <Link
+                  to="/chinese-cars"
+                  onClick={(e) => {
+                    handleNavItemClick("/chinese-cars", e);
+                    closeMenu();
+                  }}
+                  className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-colors duration-200 text-lg ${
+                    isNavItemActive("/chinese-cars")
+                      ? "bg-[#0b0b0b] text-white"
+                      : "hover:bg-[#0b0b0b]/10"
+                  }`}
+                >
                   <TruckIcon className="w-6 h-6" />
                   السيارات الصينيه
                 </Link>

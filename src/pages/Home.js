@@ -265,7 +265,14 @@ function Home() {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredVehicles.map((vehicle) => (
+            {[
+              ...filteredVehicles,
+              ...filteredVehicles,
+              ...filteredVehicles,
+              ...filteredVehicles,
+              ...filteredVehicles,
+              ...filteredVehicles,
+            ].map((vehicle) => (
               <AuctionCard key={vehicle.id} auction={vehicle} />
             ))}
           </div>
@@ -500,7 +507,14 @@ function Home() {
           <h3 className="text-xl font-semibold mb-4">الأكثر شهرة</h3>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredVehicles.map((v) => (
+            {[
+              ...filteredVehicles,
+              ...filteredVehicles,
+              ...filteredVehicles,
+              ...filteredVehicles,
+              ...filteredVehicles,
+              ...filteredVehicles,
+            ].map((v) => (
               <div
                 key={v.id}
                 onClick={() => toggleCardSelection(v.id)}
