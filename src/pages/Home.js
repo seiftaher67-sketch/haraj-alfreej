@@ -407,7 +407,7 @@ function Home() {
                     className="h-6"
                   />
                   <img
-                    src="/assets/images/icons/icons.png"
+                    src="/assets/images/icons/Icons.png"
                     alt="mastercard"
                     className="h-6"
                   />
