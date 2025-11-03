@@ -121,7 +121,15 @@ const RegisterModal = ({ isOpen, onClose, onLoginClick }) => {
 
       {showVerification && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-lg p-8 w-[480px] text-right">
+          <div className="bg-white rounded-lg p-8 w-[480px] text-right relative">
+            <button
+              onClick={() => setShowVerification(false)}
+              className="absolute top-4 left-4 text-gray-600 hover:text-gray-800"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+              </svg>
+            </button>
             <p className="text-lg mb-4">تم ارسال كود التفعيل بنجاح</p>
             <p className="text-gray-600 mb-6">رمز التحقق المرسل الى الجوال</p>
             <div className="flex justify-center gap-2 mb-6">

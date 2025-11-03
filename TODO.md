@@ -1,13 +1,9 @@
-- Make hero section responsive (text and image) ✓
-- Make vision and future vision section responsive ✓
-- Make intro section responsive ✓
-- Make about company section responsive ✓
-- Make auction section responsive ✓
-- Make goals section responsive ✓
-- Make download app section responsive ✓
+# TODO: Add Back Button to Verification Code Pages
 
-# TODO for PaymentPage Validation
+## Tasks
+- [x] Add back button to RegisterModal verification screen
+- [x] Change close button to back arrow in LoginModal verification screen for consistency
 
-- [x] Update isFormComplete to check selectedMethod, locationData, and all cardData fields
-- [x] Add disabled={!isFormComplete} to the "Pay Now" button
-- [x] Add disabled styling (opacity-50 cursor-not-allowed) to the button when disabled
+## Details
+- In `src/components/auth/RegisterModal.js`, add a back button (arrow icon) in the verification modal to go back to the registration form.
+- In `src/components/auth/LoginModal.js`, change the existing close button (X) to a back arrow icon for consistency.
