@@ -295,14 +295,14 @@ function Home() {
         <img
           src="/assets/images/images/Group 2 (1).png"
           alt="decor-left"
-          className="block absolute -left-12 lg:-left-24 top-1/2 -translate-y-1/2 w-40 lg:w-80 pointer-events-none"
+          className="block absolute -left-6 lg:-left-12 top-1/4 -translate-y-1/4 w-60 lg:w-96 pointer-events-none"
           style={{ transform: "scaleX(-1)" }}
         />
 
         <img
           src="/assets/images/images/Group 2 (1) copy.png"
           alt="decor-right"
-          className="block absolute -right-12 lg:-right-24 top-1/2 -translate-y-1/2 w-40 lg:w-80 pointer-events-none"
+          className="block absolute -right-6 lg:-right-12 top-1/2 -translate-y-1/2 w-60 lg:w-96 pointer-events-none"
         />
 
         <div className="max-w-4xl mx-auto px-6 relative z-10">
@@ -413,7 +413,7 @@ function Home() {
                   />
                 </div>
 
-                <button className=" flex items-center justify-center mt-2  w-48 mx-auto bg-[#f2b400] hover:bg-[#d19b00] text-[#0b0b0b] font-medium py-3 rounded-lg shadow ">
+                <button className=" flex items-center justify-center mt-2  w-56 mx-auto bg-[#f2b400] hover:bg-[#d19b00] text-[#0b0b0b] font-medium py-3 rounded-lg shadow ">
                   بدأ التزايد الآن
                 </button>
               </div>
