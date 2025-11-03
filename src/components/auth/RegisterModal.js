@@ -130,8 +130,8 @@ const RegisterModal = ({ isOpen, onClose, onLoginClick }) => {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
               </svg>
             </button>
-            <p className="text-lg mb-4">تم ارسال كود التفعيل بنجاح</p>
-            <p className="text-gray-600 mb-6">رمز التحقق المرسل الى الجوال</p>
+            <p className="text-lg mb-4 text-center">تم ارسال كود التفعيل بنجاح</p>
+            <p className="text-gray-600 mb-6 text-center">رمز التحقق المرسل الى الجوال</p>
             <div className="flex justify-center gap-2 mb-6">
               {verificationCode.map((digit, index) => (
                 <input
