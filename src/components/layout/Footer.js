@@ -26,7 +26,7 @@ const Footer = () => {
           </div>
 
           {/* center: useful links */}
-          <div className="flex-1 text-right mr-[300px] mt-20">
+          <div className="flex-1 text-right mr-[0px] mt-20">
             <h4 className="text-lg font-semibold mb-4">الدعم الفني</h4>
             <ul className="space-y-3">
               <li><a href="#" className="text-base font-medium text-white">مركز الأمان</a></li>
@@ -34,6 +34,10 @@ const Footer = () => {
               <li><a href="#" className="text-base font-medium text-white">الحسابات والأرقام الموقوفة</a></li>
               <li><a href="#" className="text-base font-medium text-white">حساب و سداد رسوم الموقع</a></li>
             </ul>
+            <div className="mt-[50px] text-center text-white text-sm">
+              © ELFouriaj Group NO.0.1 , 2025-10-13
+              <div className="mt-2">الرقم الضريبي 300710482300003</div>
+            </div>
           </div>
 
           {/* left: contact */}
@@ -56,15 +60,7 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* bottom area */}
-        <div className="mt-10 border-t border-white/10 pt-6">
-          
 
-          <div className="mt-4 text-center text-gray-400 text-sm">
-            © ELFouriaj Group NO.0.1 , 2025-10-13
-            <div className="mt-2">الرقم الضريبي 300710482300003</div>
-          </div>
-        </div>
       </div>
     </footer>
   );
