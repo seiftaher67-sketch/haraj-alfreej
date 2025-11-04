@@ -65,6 +65,12 @@ const Footer = () => {
         {/* White transparent separator line */}
         <div className="w-full h-px bg-white/50 mt-8"></div>
 
+        {/* Atlas image below the line, extreme left */}
+        <div className="flex justify-start mt-4 items-center">
+          <img src="/atlas.png" alt="atlas" className="h-10 w-10" />
+          <span className="text-white/50 text-xs mr-2">حقوق النشر 20250-2026 أطلس البيانات. جميع الحقوق محفوظة</span>
+        </div>
+
       </div>
     </footer>
   );
