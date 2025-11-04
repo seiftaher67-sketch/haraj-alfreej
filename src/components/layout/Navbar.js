@@ -315,7 +315,7 @@ export default function Navbar({ onLoginClick }) {
                 }`}
               >
                 <TruckIcon className="w-5 h-5" />
-                السيارات الصينيه
+                ماركه السيارات
               </Link>
             </div>
 
@@ -588,7 +588,7 @@ export default function Navbar({ onLoginClick }) {
                   }`}
                 >
                   <TruckIcon className="w-6 h-6" />
-                  السيارات الصينيه
+                  ماركه السيارات
                 </Link>
               </nav>
             </div>

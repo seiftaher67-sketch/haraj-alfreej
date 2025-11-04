@@ -13,7 +13,7 @@ export default function ChineseCars() {
       const sampleCars = [
         {
           id: 1,
-          image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=600',
+          image: '/assets/images/trucks/Frame 112.png',
           title: 'BYD Han EV',
           price: '150000',
           minPrice: '140000',
@@ -26,7 +26,7 @@ export default function ChineseCars() {
         },
         {
           id: 2,
-          image: 'https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?q=80&w=600',
+         image: '/assets/images/trucks/Frame 112.png',
           title: 'Geely Coolray',
           price: '80000',
           minPrice: '75000',
@@ -39,7 +39,7 @@ export default function ChineseCars() {
         },
         {
           id: 3,
-          image: 'https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?q=80&w=600',
+          image: '/assets/images/trucks/Frame 112.png',
           title: 'Chery Tiggo 8',
           price: '120000',
           minPrice: '110000',
@@ -52,8 +52,8 @@ export default function ChineseCars() {
         },
         {
           id: 4,
-          image: 'https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?q=80&w=600',
-          title: 'Haval H6',
+         image: '/assets/images/trucks/Frame 112.png',
+         title: 'Haval H6',
           price: '95000',
           minPrice: '90000',
           model: 'H6',
@@ -62,6 +62,19 @@ export default function ChineseCars() {
           year: '2024',
           remainingTime: '10 : 45 : 30',
           status: 'Upcoming',
+        },
+        {
+          id: 5,
+          image: '/assets/images/trucks/Frame 112.png',
+          title: 'New Truck Model',
+          price: '200000',
+          minPrice: '180000',
+          model: 'Truck Model',
+          serialNumber: 'TRK005',
+          bidsCount: '3',
+          year: '2023',
+          remainingTime: '08 : 20 : 15',
+          status: 'Opening',
         },
       ];
       setChineseCars(sampleCars);
