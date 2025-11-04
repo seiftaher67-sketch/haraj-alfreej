@@ -4,6 +4,8 @@ import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import { motion } from "framer-motion";
 import AuctionCard from "../components/AuctionCard";
 import { FaTruck, FaCar, FaTrailer, FaCog } from "react-icons/fa";
+import logo1 from "../styles/logo1.png";
+import logo2 from "../styles/logo2.png";
 
 function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -34,8 +36,8 @@ function Home() {
     },
   ];
   const images = [
-    "/assets/images/images/p1.jpeg",
-    "/assets/images/images/p2.jpeg",
+    logo1,
+    logo2,
   ];
 
   const vehicles = [
