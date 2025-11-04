@@ -100,7 +100,7 @@ const About = () => {
           <motion.img
             src="/assets/images/images/img69.jpg"
             alt="Company Intro"
-            className="rounded-xl w-full max-w-full md:w-96 h-64 md:h-96 object-cover hover:scale-105 transition-transform duration-300"
+            className="rounded-xl w-full max-w-full md:w-full h-64 md:h-96 object-cover hover:scale-105 transition-transform duration-300"
             initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
