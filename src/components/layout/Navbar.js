@@ -17,22 +17,11 @@ export default function Navbar({ onLoginClick }) {
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const closeMenu = () => setIsMenuOpen(false);
 
-  const scrollToLiveBroadcast = () => {
-    const element = document.getElementById("live-broadcast");
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
+
 
   const handleNavItemClick = (path, e) => {
     // Update selected nav item
     setSelectedNavItem(path);
-
-    // Handle special case for live-broadcast on home page
-    if (path === "/live-broadcast" && location.pathname === "/") {
-      e.preventDefault();
-      scrollToLiveBroadcast();
-    }
 
     // Close mobile menu when navigating
     if (isMenuOpen) {
