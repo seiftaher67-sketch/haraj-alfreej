@@ -305,18 +305,6 @@ export default function Navbar({ onLoginClick }) {
                 </svg>
                 المفضلة
               </Link>
-              <Link
-                to="/chinese-cars"
-                onClick={(e) => handleNavItemClick("/chinese-cars", e)}
-                className={`flex items-center gap-2 px-3 py-2 rounded-lg transition-colors duration-200 ${
-                  isNavItemActive("/chinese-cars")
-                    ? "bg-[#0b0b0b] text-white"
-                    : "hover:bg-[#0b0b0b]/10"
-                }`}
-              >
-                <TruckIcon className="w-5 h-5" />
-                ماركه السيارات
-              </Link>
             </div>
 
             {/* hamburger menu button for mobile */}
@@ -574,21 +562,6 @@ export default function Navbar({ onLoginClick }) {
                     />
                   </svg>
                   المفضلة
-                </Link>
-                <Link
-                  to="/chinese-cars"
-                  onClick={(e) => {
-                    handleNavItemClick("/chinese-cars", e);
-                    closeMenu();
-                  }}
-                  className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-colors duration-200 text-lg ${
-                    isNavItemActive("/chinese-cars")
-                      ? "bg-[#0b0b0b] text-white"
-                      : "hover:bg-[#0b0b0b]/10"
-                  }`}
-                >
-                  <TruckIcon className="w-6 h-6" />
-                  ماركه السيارات
                 </Link>
               </nav>
             </div>
