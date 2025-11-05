@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
-import { motion } from "framer-motion";
 import AuctionCard from "../components/AuctionCard";
 import { FaTruck, FaCar, FaTrailer, FaCog } from "react-icons/fa";
 import logo1 from "../styles/logo1.png";
@@ -220,7 +219,7 @@ function Home() {
                     {fullTrack.map((img, idx) => (
                       <div key={idx} className="marquee-item">
                         <img
-                          src={encodeURI(img)}
+                          src={img}
                           alt={`brand-${idx}`}
                           className="w-full h-full object-cover"
                         />
@@ -546,7 +545,11 @@ function Home() {
 
             <div className="hidden sm:flex items-center gap-4">
               <a href="https://youtu.be/bKZtjt27AFg?si=SOD54qWDcOt0zcrM" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-sm text-gray-600">
-                <svg className="w-5 h-5 text-red-600" viewBox="0 0 24 24" fill="currentColor"><path d="M23 7s-.2-1.7-.8-2.4C21.4 4 20.4 4 20 4H4C3.6 4 2.6 4 1.8 4.6 1.2 5.3 1 7 1 7S1 8.8 1.8 9.5C2.6 10 3.6 10 4 10h16c.4 0 1.4 0 2.2-.5.6-.7.8-2.3.8-2.3z"/><path d="M10 8l6 4-6 4z" fill="#fff"/></svg>
+                <img
+                  src="https://www.gstatic.com/youtube/img/branding/youtubelogo/svg/youtubelogo.svg"
+                  alt="YouTube"
+                  className="w-20 h-6 object-contain"
+                />
                 youtu.be/bKZtjt27AFg
               </a>
             </div>
