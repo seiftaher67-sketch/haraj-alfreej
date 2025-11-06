@@ -175,8 +175,8 @@ function Home() {
           align-items: center;
           justify-content: center;
           padding-inline: 0;
-          width: 200px;
-          height: 100px;
+          width: 300px;
+          height: 150px;
         }
 
         /* Button background animation */
