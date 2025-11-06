@@ -3,8 +3,14 @@ import { Link } from "react-router-dom";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import AuctionCard from "../components/AuctionCard";
 import { FaTruck, FaCar, FaTrailer, FaCog } from "react-icons/fa";
-import logo1 from "../styles/logo1.png";
-import logo2 from "../styles/logo2.png";
+import l1 from "../styles/l1.png";
+import l2 from "../styles/l2.png";
+import l3 from "../styles/l3.png";
+import l4 from "../styles/l4.png";
+import l5 from "../styles/l5.png";
+import l6 from "../styles/l6.png";
+import l7 from "../styles/l7.png";
+import l8 from "../styles/l8.png";
 
 function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -30,8 +36,14 @@ function Home() {
     },
   ];
   const images = [
-    logo1,
-    logo2,
+    l1,
+    l2,
+    l3,
+    l4,
+    l5,
+    l6,
+    l7,
+    l8,
   ];
 
   const vehicles = [
@@ -153,20 +165,15 @@ function Home() {
         .marquee-container {
           position: relative;
           width: 100%;
-          overflow: hidden;
+          overflow: visible;
         }
 
         .marquee-track {
           display: flex;
           align-items: center;
           width: max-content;
-          gap: 0;
-          animation: marquee 90s linear infinite;
-          will-change: transform;
-        }
-
-        .marquee-track:hover { 
-          animation-play-state: paused; 
+          gap: 40px;
+          animation: marquee 30s linear infinite;
         }
 
         .marquee-item {
@@ -175,8 +182,9 @@ function Home() {
           align-items: center;
           justify-content: center;
           padding-inline: 0;
-          width: 300px;
-          height: 150px;
+          padding-top: 0;
+          width: 120px;
+          height: 80px;
         }
 
         /* Button background animation */
@@ -221,7 +229,7 @@ function Home() {
                         <img
                           src={img}
                           alt={`brand-${idx}`}
-                          className="w-full h-full object-cover"
+                          className="w-full h-full object-contain"
                         />
                       </div>
                     ))}
