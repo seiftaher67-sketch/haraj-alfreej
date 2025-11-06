@@ -2,7 +2,7 @@ import React from 'react';
 
 const Footer = () => {
   return (
-    <footer dir="rtl" className="bg-black text-white py-6 border-b border-white/50">
+    <footer dir="rtl" className="bg-black text-white py-14 border-b border-white/50">
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex flex-col lg:flex-row gap-8 items-start">
           {/* right: about + logo */}
@@ -12,16 +12,14 @@ const Footer = () => {
               <div className="text-right">
                 <h4 className="text-lg font-semibold mt-[-5px]">شركة علي عبدالله الفريج</h4>
                 <p className="mt-3 text-sm text-gray-300 leading-relaxed">
-                  <span>شركة ومزاد علي عبدالله الفريج وأولاده للشاحنات والمعدات الثقيلة</span><br />
-                  <span>من أبرز الشركات المتخصصة في بيع وشراء الشاحنات والمعدات الثقيلة المستعملة</span><br />
-                  <span>في مدينة الرياض بالمملكة العربية السعودية، تحديدًا في حي السلي.</span><br />
-                  <span>تتمتع الشركة بخبرة واسعة في مجال المركبات الثقيلة</span><br />
-                  <span>وتنظيم مزادات دورية لعرض الشاحنات والمعدات أمام العملاء والتجار،</span><br />
-                  <span>مما جعلها وجهة موثوقة للراغبين في البيع أو الشراء داخل السوق المحلي.</span>
+                  <strong>
+                    <span>شركة ومزاد علي عبدالله الفريج وأولاده للشاحنات والمعدات الثقيلة المستعملة من أبرز الشركات المتخصصة في بيع وشراء الشاحنات والمعدات الثقيلة في مدينة الرياض بالمملكة العربية السعودية، تحديدًا في حي السلي.</span><br />
+                    <span>تتمتع الشركة بخبرة واسعة في مجال المركبات الثقيلة وتنظيم مزادات دورية لعرض الشاحنات والمعدات أمام العملاء والتجار، مما جعلها وجهة موثوقة للراغبين في البيع أو الشراء داخل السوق المحلي.</span>
+                  </strong>
                 </p>
                 <div className="mt-4 flex items-right justify-start gap-2 text-sm text-yellow-400">
                   <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 7 7 13 7 13s7-6 7-13c0-3.87-3.13-7-7-7z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                  <a href="https://maps.app.goo.gl/XL6Jp84W9SLgSeoQ7?g_st=awb" className="text-blue-500 font-bold text-lg hover:text-blue-300">الموقع الخاص بالفريج</a>
+                  <a href="https://maps.app.goo.gl/XL6Jp84W9SLgSeoQ7?g_st=awb" className="text-blue-500 font-bold text-base hover:text-blue-300">الموقع الخاص بالفريج</a>
                 </div>
               </div>
             </div>

@@ -1,4 +1,3 @@
-# TODO for Fixing MasterCard Logo Responsiveness in LiveBroadcast Page
+# TODO List for Footer Update
 
-- [x] Fix MasterCard logo src case in src/pages/LiveBroadcast.js
-- [x] Add w-auto class to payment icons for responsiveness
+- [x] Rearrange the Footer description to make "المستعملة" alone on its own line as the second line, keeping it bold.
