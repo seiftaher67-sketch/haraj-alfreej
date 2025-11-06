@@ -1,3 +1,4 @@
-# TODO List for Adding Social Login Options
+# TODO for Fixing MasterCard Logo Responsiveness in LiveBroadcast Page
 
-- [ ] Modify src/components/auth/LoginModal.js to add Google, Facebook, and Apple login buttons in the initial modal view
+- [x] Fix MasterCard logo src case in src/pages/LiveBroadcast.js
+- [x] Add w-auto class to payment icons for responsiveness

@@ -137,9 +137,9 @@ function LiveBroadcast() {
 
           <div className="text-center mt-12">
             <div className="flex items-center justify-center gap-4 mb-6">
-              <img src="/assets/images/icons/2560px-Mada_Logo.svg 1.png" alt="paypal" className="h-8" />
-              <img src="/assets/images/icons/logos_visa.png" alt="visa" className="h-8" />
-              <img src="/assets/images/icons/icons.png" alt="mastercard" className="h-8" />
+              <img src="/assets/images/icons/2560px-Mada_Logo.svg 1.png" alt="paypal" className="h-8 w-auto" />
+              <img src="/assets/images/icons/logos_visa.png" alt="visa" className="h-8 w-auto" />
+              <img src="/assets/images/icons/Icons.png" alt="mastercard" className="h-8 w-auto" />
              </div>
             
           </div>
