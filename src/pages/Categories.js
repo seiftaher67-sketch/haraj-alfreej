@@ -2,25 +2,25 @@ import React, { useState } from "react";
 import AuctionCard from "../components/AuctionCard";
 import { FaTruck, FaCar, FaTrailer, FaCog } from "react-icons/fa";
 
+export const categories = [
+  { name: "شاحنات", icon: FaTruck },
+  { name: "سيارات", icon: FaCar },
+  { name: "مقطورات", icon: FaTrailer },
+  { name: "قطع غيار", icon: FaCog },
+];
+
+export const filters = [
+  { name: "المدينة", options: ["الرياض", "جدة", "الدمام", "مكة"] },
+  { name: "الماركة", options: ["مرسيدس", "فولفو", "مان", "سكانيا"] },
+  { name: "الموديل", options: ["TGS", "FH", "TGX", "R"] },
+  { name: "سنة الصنع", options: ["2020", "2021", "2022", "2023"] },
+  { name: "حالة السيارة", options: ["جديد", "مستعمل", "مصدوم"] },
+];
+
 const Categories = () => {
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [selectedCards, setSelectedCards] = useState([]);
   const [openDropdown, setOpenDropdown] = useState(null);
-
-  const categories = [
-    { name: "شاحنات", icon: FaTruck },
-    { name: "سيارات", icon: FaCar },
-    { name: "مقطورات", icon: FaTrailer },
-    { name: "قطع غيار", icon: FaCog },
-  ];
-
-  const filters = [
-    { name: "المدينة", options: ["الرياض", "جدة", "الدمام", "مكة"] },
-    { name: "الماركة", options: ["مرسيدس", "فولفو", "مان", "سكانيا"] },
-    { name: "الموديل", options: ["TGS", "FH", "TGX", "R"] },
-    { name: "سنة الصنع", options: ["2020", "2021", "2022", "2023"] },
-    { name: "حالة السيارة", options: ["جديد", "مستعمل", "مصدوم"] },
-  ];
 
   const vehicles = [
     {
