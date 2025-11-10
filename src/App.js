@@ -31,6 +31,7 @@ import Notifications from './pages/profile/settings/Notifications';
 import ChangePassword from './pages/profile/settings/ChangePassword';
 import ProfileEdit from './pages/profile/settings/ProfileEdit';
 import Location from './pages/profile/settings/Location';
+import TermsAndConditions from './pages/TermsAndConditions';
 
 function App() {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
@@ -56,6 +57,7 @@ function App() {
             <Route path="/payment" element={<PaymentPage />} />
             <Route path="/live-broadcast" element={<LiveBroadcast />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
             <Route path="/profile" element={<ProfileHome />}>
               <Route index element={<ProfileDashboard />} />
               <Route path="dashboard" element={<ProfileDashboard />} />
