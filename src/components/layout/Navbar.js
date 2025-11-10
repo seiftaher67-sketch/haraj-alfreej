@@ -138,6 +138,16 @@ export default function Navbar({ onLoginClick }) {
                 />
               </svg>
             </button>
+             <Link
+    to="/profile"
+    className="relative flex items-center justify-center w-10 h-10 rounded-full overflow-hidden border-2 border-white hover:opacity-90 transition"
+  >
+    <img
+      src="/assets/images/images/Frame 755.png"
+      alt="Profile"
+      className="object-cover w-full h-full"
+    />
+  </Link>
           </div>
         </div>
       </div>

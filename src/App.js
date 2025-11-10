@@ -18,6 +18,19 @@ import ChineseCars from './pages/ChineseCars';
 import CarDetails from './pages/CarDetails';
 import PaymentPage from './pages/PaymentPage';
 import LiveBroadcast from './pages/LiveBroadcast';
+import ProfileHome from './pages/profile/ProfileHome';
+import ProfileDashboard from './pages/profile/ProfileDashboard';
+import AccountPayments from './pages/profile/AccountPayments';
+import BidHistory from './pages/profile/BidHistory';
+import Recharge from './pages/profile/Recharge';
+import SettingsHome from './pages/profile/settings/SettingsHome';
+import Support from './pages/profile/settings/Support';
+import LegalInfo from './pages/profile/settings/LegalInfo';
+import Logout from './pages/profile/settings/Logout';
+import Notifications from './pages/profile/settings/Notifications';
+import ChangePassword from './pages/profile/settings/ChangePassword';
+import ProfileEdit from './pages/profile/settings/ProfileEdit';
+import Location from './pages/profile/settings/Location';
 
 function App() {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
@@ -43,6 +56,23 @@ function App() {
             <Route path="/payment" element={<PaymentPage />} />
             <Route path="/live-broadcast" element={<LiveBroadcast />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/profile" element={<ProfileHome />}>
+              <Route index element={<ProfileDashboard />} />
+              <Route path="dashboard" element={<ProfileDashboard />} />
+              <Route path="account-payments" element={<AccountPayments />} />
+              <Route path="bid-history" element={<BidHistory />} />
+              <Route path="recharge" element={<Recharge />} />
+              <Route path="settings" element={<SettingsHome />} />
+              <Route path="profile-edit" element={<ProfileEdit />} />
+              <Route path="location" element={<Location />} />
+              <Route path="support" element={<Support />} />
+              <Route path="contact" element={<Support />} />
+              <Route path="complaints" element={<Support />} />
+              <Route path="legal" element={<LegalInfo />} />
+              <Route path="logout" element={<Logout />} />
+              <Route path="notifications" element={<Notifications />} />
+              <Route path="change-password" element={<ChangePassword />} />
+            </Route>
           </Routes>
         </main>
         <Footer />
