@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import AuctionCard from "../components/AuctionCard";
 import { FaTruck, FaCar, FaTrailer, FaCog } from "react-icons/fa";
+import { MdChevronLeft } from "react-icons/md";
 import l1 from "../styles/l1.png";
 import l2 from "../styles/l2.png";
 import l3 from "../styles/l3.png";
@@ -286,7 +287,7 @@ function Home() {
               className="inline-flex items-center gap-2 text-red-500 hover:text-red-700 font-medium"
             >
               عرض المزيد
-              <ChevronLeftIcon className="w-5 h-5" />
+              <MdChevronLeft className="w-5 h-5" />
             </Link>
           </div>
         </div>
