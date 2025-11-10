@@ -43,11 +43,6 @@ const ProfileHome = () => {
       label: "الإشعارات",
       icon: <Bell className="w-4 h-4" />,
     },
-    {
-      path: "legal",
-      label: "الخصوصية",
-      icon: <FileText className="w-4 h-4" />,
-    },
   ];
 
   const supportSubMenuItems = [
@@ -72,7 +67,6 @@ const ProfileHome = () => {
     if (location.pathname.startsWith('/profile/settings') ||
         location.pathname.startsWith('/profile/change-password') ||
         location.pathname.startsWith('/profile/notifications') ||
-        location.pathname.startsWith('/profile/legal') ||
         location.pathname.startsWith('/profile/profile-edit') ||
         location.pathname.startsWith('/profile/location')) {
       setIsSettingsExpanded(true);
@@ -140,7 +134,6 @@ const ProfileHome = () => {
                 const isSettingsActive = location.pathname.startsWith('/profile/settings') ||
                   location.pathname.startsWith('/profile/change-password') ||
                   location.pathname.startsWith('/profile/notifications') ||
-                  location.pathname.startsWith('/profile/legal') ||
                   location.pathname.startsWith('/profile/profile-edit') ||
                   location.pathname.startsWith('/profile/location');
                 return (
