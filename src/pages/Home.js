@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
 import AuctionCard from "../components/AuctionCard";
 import { FaTruck, FaCar, FaTrailer, FaCog } from "react-icons/fa";
@@ -64,7 +64,7 @@ function Home() {
 
   const filteredVehicles = vehicles;
 
-  const nextSlide = () => setCurrentSlide((p) => (p + 1) % slides.length);
+  const nextSlide = useCallback(() => setCurrentSlide((p) => (p + 1) % slides.length), []);
 
   const toggleCategory = (category) => {
     setSelectedCategories((prev) =>

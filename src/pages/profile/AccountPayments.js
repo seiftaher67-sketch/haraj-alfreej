@@ -34,10 +34,10 @@ const AccountPayments = () => {
 
       <div className="mb-8">
         <div className="bg-gradient-to-br from-yellow-200 to-gray-600 shadow-lg rounded-lg p-6 border border-yellow-200 hover:shadow-xl transition-shadow">
-          <h2 className="text-lg font-bold text-black text-right">اجمالى رصيد المحفظه</h2>
+          <h2 className="text-lg font-bold text-black text-center">اجمالى رصيد المحفظه</h2>
           <div className="flex justify-between items-center mt-4">
-            <p className="text-lg font-bold text-black"> {balance.total} ر.س</p>
             <p className="text-lg font-bold text-black">عدد النقاط: {balance.total} نقطة</p>
+            <p className="text-lg font-bold text-black">{balance.total} ريال سعودي</p>
           </div>
         </div>
       </div>
