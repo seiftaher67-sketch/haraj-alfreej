@@ -65,8 +65,6 @@ function Home() {
   const filteredVehicles = vehicles;
 
   const nextSlide = () => setCurrentSlide((p) => (p + 1) % slides.length);
-  const prevSlide = () =>
-    setCurrentSlide((p) => (p - 1 + slides.length) % slides.length);
 
   const toggleCategory = (category) => {
     setSelectedCategories((prev) =>
@@ -89,23 +87,9 @@ function Home() {
   useEffect(() => {
     const t = setInterval(nextSlide, 5000);
     return () => clearInterval(t);
-  }, []);
+  }, [nextSlide]);
 
-  // CSS for clock icon animation
-  const clockAnimationStyle = `
-    @keyframes colorCycle {
-      0%, 100% { color: white; }
-      50% { color: red; }
-    }
 
-    .clock-icon {
-      animation: colorCycle 2s infinite;
-    }
-
-    .group:hover .clock-icon {
-      animation-play-state: paused;
-    }
-  `;
 
   return (
     <div dir="rtl" className="flex flex-col bg-gray-50 text-[#0b0b0b]">

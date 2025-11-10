@@ -1,9 +1,7 @@
-# LegalInfo Page Formatting Task
+# TODO for Updating AccountPayments Page
 
-## Steps to Complete:
-- [x] Restructure JSX to break content into sections with headings (e.g., h2 for main parts like "التزامات البائع" and "التزامات المشتري").
-- [x] Convert bullet points into proper <ul> lists.
-- [x] Add relevant icons (e.g., DocumentTextIcon) to sections for visual appeal.
-- [x] Improve spacing, typography, and layout using Tailwind classes for a more consistent and professional look.
-- [x] Remove unused imports (Link, ShieldExclamationIcon, ChevronLeftIcon).
-- [ ] Test the updated page for visual consistency and professionalism.
+- [x] Replace the three balance cards with a single rectangular card.
+- [x] Update the card content to include:
+  - Title: "اجمالى رصيد المحفظه" (centered)
+  - Horizontal layout: "عدد النقاط: {balance.total} نقطة" (left), "{balance.total} ريال سعودي" (right)
+  - Keep gradient background, black bold text, rectangular shape.

@@ -70,9 +70,12 @@ const VerifyButton = styled.button`
 
 const RegisterLink = styled.div`
   text-align: center;
-  a {
+  button {
     color: #000;
     text-decoration: none;
+    background: none;
+    border: none;
+    cursor: pointer;
   }
 `;
 
@@ -230,7 +233,7 @@ const Login = () => {
           </form>
 
           <RegisterLink>
-            <a href="#">ليس لديك حساب؟ سجل الآن</a>
+            <button onClick={() => console.log('Register clicked')}>ليس لديك حساب؟ سجل الآن</button>
           </RegisterLink>
         </Container>
       )}
