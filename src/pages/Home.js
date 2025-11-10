@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import AuctionCard from "../components/AuctionCard";
 import { FaTruck, FaCar, FaTrailer, FaCog } from "react-icons/fa";
 import l1 from "../styles/l1.png";
